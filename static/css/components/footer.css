@@ -1,0 +1,74 @@
+/* заглушка */
+
+.footer {
+    background: #131415;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+    width: 100%;
+    padding: 15px;
+    height: 77px; 
+    margin-top: -77px;
+    min-width: 1100px;
+  }
+  .footer-q {
+    width: 33%;
+    display: block;
+    float: left;
+  }
+  .footer-full-text:first-child {
+    margin-right: 50px;
+  }
+  .footer-q .logo-text {
+  display: block;
+  text-align: center;
+  margin: 15px;
+  }
+  .footer-full-text {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: -3px;
+    margin-bottom: 2px;
+  }
+  .footer-text_link {
+  
+    font-weight: bold;
+    color: #ffffff;
+  }
+  .footer-text_name {
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .footer-messeger_text {
+    font-weight: bold;
+    display: block;
+    text-align: right;
+    margin: 2px;
+    margin-right: 8px;
+  }
+  .footer-messeger__item {
+    list-style: none;
+    display: block;
+    float: left;
+    background: #ffffff;
+    margin: 8px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-align: center;
+  }
+  .footer-messeger__item:hover {
+    background: #f89513;
+  }
+  .footer-messeger__icon {
+    width: auto;
+    height: auto;
+  
+  }
+  .footer-messeger{
+    margin: 0px;
+    display: block;
+    float: right;
+  }

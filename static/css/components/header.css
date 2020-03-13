@@ -1,0 +1,146 @@
+/* шапка    */
+
+.header {
+    background: #131415;
+    height: 75px;
+}
+.header_left, .header_right {
+    float: left;
+    width: 50%;
+}
+.header_left {
+    padding: 10px 0;
+}
+.header_right {
+    text-align: right;
+    /* margin-top: 12px; */
+    padding-top: 20px;
+}
+.header_center{
+    text-align: center;
+    height: 75px;
+}
+.logo-text{
+    float: left;
+    width: 70%;
+    color: #f89513; 
+    font-family: 'GoraFree';
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 12px 0;
+}
+.logo-decor {
+    display: inline-block;
+}
+.logo_icon {
+ width: 50px;
+ height: 50px;
+ float: left;
+    
+}
+.nav-menu {
+    list-style: none; /*убрать точки */
+    padding: 0%     ;
+
+}
+.nav-menu__item {
+    float: left;
+    width: 33%;
+    margin-left: 0px;
+}
+.nav-menu__link{
+    text-decoration: none; /*убрать подчеркивание в ссылке */
+    display: inline-block;
+}
+.nav-menu__icon, .nav-menu__text {
+    float: left;
+    width: 50%;
+}
+.nav-menu__icon {
+    margin-top: 11px;
+    margin-right: 10px;
+    width: 23px;
+    height: 23px;
+}
+.nav-menu__link:hover .nav-menu__text  {
+    color: #f89513;
+}
+.none  {
+    display: none;
+}
+.nav-menu__link:hover .none  {
+    display: inline-block;
+}
+.nav-menu__link:hover .not_none  {
+    display: none;
+}
+.nav-menu__text {
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+}
+.contacts {
+    display: inline-block;
+}
+.contacts__phone {
+    font-size: 21px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+.contacts__schedule {
+    font-size: 14px;
+    color: #c77814;
+    opacity: .7;
+    display: block;
+}
+
+.form__cell-header {
+    display: block;
+    float: left;
+    width: 190px; 
+    margin-right: 15px;
+}
+  .form__input-text-mod{
+    width: 100%;
+  height: 30px;
+  padding: 13px 10px;
+  font-size: 14px; /*размерр текста*/
+  font-weight: 300px; /*шрифт*/
+  border: 2px solid transparent;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.form__input-text-mod::-webkit-input-placeholder {
+    color:#908f8f; /*цвет текста в input*/
+  }
+  .form__input-text-mod::-moz-placeholder {
+    color:#908f8f;
+  }
+  .form__input-text-mod:focus { /*цвет окантовки*/
+    border-color: #f89513;
+    outline: none;
+  }
+
+  .header_btn {
+	padding: 10px 13px;
+	display: block;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #f1f1f1;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+	transition: .3s;
+	-webkit-transition: .3s;
+	background: #f89513;
+	border: 0;
+  cursor: pointer;
+  margin: -2 auto;
+}
+.header_btn:hover {
+	background: #834c05;
+}

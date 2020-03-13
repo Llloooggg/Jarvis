@@ -1,0 +1,38 @@
+
+@font-face {
+    font-family: 'GoraFree';
+    src: url('../../fonts/GoraFree-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'OpenSans';
+    src: url('../../fonts/OpenSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'OpenSans';
+    src: url('../../fonts/OpenSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'OpenSans';
+    src: url('../../fonts/OpenSansLight-Italic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Roboto';
+    src: url('../../fonts/Roboto-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('../../fonts/Roboto-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
