@@ -19,10 +19,6 @@
                         <p class="logo-text">J.a.r.v.i.s </p>
                     </a>
                 </div>
-                <!-- menu --> 
-                
-                   
-                </nav>
                 <div class="header_right clearfix">
                     <label class="form__cell-header ">
                         <input type="text" class="form__input-text-mod" placeholder="email" >
@@ -44,69 +40,71 @@
                 Создать аккаунт
             </div>
             <!-- лейблы -->
-            <div class="form__fields">
-                <div class="form__element" method="post">
-                    <div class="form__row clearfix">   
-                        <label class="form__cell">
-                            <div class="form__field-title">
-                                Ваше имя
-                            </div>
-                            <input type="text" class="form__input-text" placeholder="Введите имя">
-                        </label>
-                        <label class="form__cell">
-                            <div class="form__field-title">
-                                Ваша фамилия
-                            </div>
-                            <input type="text" class="form__input-text" placeholder="Введите фамилию">
-                        </label>
-                        <label class="form__log">
-                            <div class="form__field-title">  
-                                Введите логин     
-                            </div>
-                            <input type="text" class="form__input-text" placeholder="Введите login" name = "login">
-                        </label>  
-                        <label class="form__log">
-                            <div class="form__field-title"> 
-                                Введите email      
-                            </div>
-                            <input type="text" class="form__input-text" placeholder="Введите email">
-                        </label>   
-                        <label class="form__log">
-                            <div class="form__field-title"> 
-                                Введите пароль
-                            </div>
-                            <input type="text" class="form__input-text" placeholder="Введите пароль" name = "password">
-                        </label>   
-                    </div>
-                    <div class="form__btns">
-                        <div class="form__controls">
-                            <div class="form__controls-btns clearfix">
-                                <div class="form__container-left">
-                                    <p class="form__field-title">
-                                        Пол
-                                    </p>
-                                    <div class="form__controls-left">
-                                        <label class="form__radio">
-                                            <input type="radio" name="review" class="form__radio-elem" checked>
-                                            <div class="form__radio-fake"></div>
-                                            <div class="form__radio-text">Муж.</div>
-                                        </label>
-                                        <label class="form__radio">
-                                            <input type="radio" name="review" class="form__radio-elem" >
-                                            <div class="form__radio-fake"></div>
-                                            <div class="form__radio-text ">Жен.</div>
-                                        </label>
+            <form action="/registration" method="POST">
+                <div class="form__fields">
+                    <div class="form__element">
+                        <div class="form__row clearfix">   
+                            <label class="form__cell">
+                                <div class="form__field-title">
+                                    Ваше имя
+                                </div>
+                                <input type="text" class="form__input-text" placeholder="Введите имя">
+                            </label>
+                            <label class="form__cell">
+                                <div class="form__field-title">
+                                    Ваша фамилия
+                                </div>
+                                <input type="text" class="form__input-text" placeholder="Введите фамилию">
+                            </label>
+                            <label class="form__log">
+                                <div class="form__field-title">  
+                                    Введите логин     
+                                </div>
+                                <input type="text" class="form__input-text" placeholder="Введите login" name = "UserLogin">
+                            </label>  
+                            <label class="form__log">
+                                <div class="form__field-title"> 
+                                    Введите email      
+                                </div>
+                                <input type="text" class="form__input-text" placeholder="Введите email">
+                            </label>   
+                            <label class="form__log">
+                                <div class="form__field-title" > 
+                                    Введите пароль
+                                </div>
+                                <input type="text" class="form__input-text" placeholder="Введите пароль" name = "UserPass">
+                            </label>   
+                        </div>
+                        <div class="form__btns">
+                            <div class="form__controls">
+                                <div class="form__controls-btns clearfix">
+                                    <div class="form__container-left">
+                                        <p class="form__field-title">
+                                            Пол
+                                        </p>
+                                        <div class="form__controls-left">
+                                            <label class="form__radio">
+                                                <input type="radio" name="review" class="form__radio-elem" checked>
+                                                <div class="form__radio-fake"></div>
+                                                <div class="form__radio-text">Муж.</div>
+                                            </label>
+                                            <label class="form__radio">
+                                                <input type="radio" name="review" class="form__radio-elem" >
+                                                <div class="form__radio-fake"></div>
+                                                <div class="form__radio-text ">Жен.</div>
+                                            </label>
+                                        </div>
+                                    </div>    
+                                    <div class="form__controls-right">
+                                        <button type="submit" value="Отправить" class="form__submit" name="RegButton" >Регистрация</button>
                                     </div>
-                                </div>    
-                                <div class="form__controls-right">
-                                    <button type="submit" value="Отправить" class="form__submit" >Регистрация</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
+            </form>
         </section>
     </div>
 

@@ -15,8 +15,8 @@ def index():
 def register():
     if request.method == "POST":
 
-        UserLogin = request.form['login']
-        UserPass = request.form['password']
+        UserLogin = request.form['UserLogin']
+        UserPass = request.form['UserPass']
 
         #db.session.add(UserLogin, UserPass)
         #db.session.commit()
@@ -24,6 +24,7 @@ def register():
         #return redirect(url_for(""))
 
         print(UserLogin, ' ', UserPass)
+        # return страница с контентом
 
     return render_template("registration.html")
 
