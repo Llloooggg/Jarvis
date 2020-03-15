@@ -10,7 +10,7 @@
 
 <body>
     <div class="wrapper">
-<!-- header -->
+<!-- header-- -->
         <header class="header">
             <div class="container clearfix">
                 <div class="header_left clearfix">
@@ -19,82 +19,123 @@
                         <p class="logo-text">J.a.r.v.i.s </p>
                     </a>
                 </div>
-                <div class="header_right clearfix">   
+                <div class="header_right">
                     <div class="contacts">
-                        <a href="/registration" class="contacts__schedule">Выйти</a>
+                        <div class="drop">                   
+                            <p href="" class="contacts__schedule contacts__schedule_mod">nagbator228#264</p>
+                            <div class="dropdown dropdown_mod">
+                                <div class="drop-block">
+                                    <div class="triangle triangle_mod"></div>
+                                    <a href="" class="input">
+                                        <input type="button" href="" name="scriptbutton" class="header_btn header_btn_mod" value="Выйти" >
+                                    </a> 
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
-        
-        <section class="form">
-            <div class="form__title">
-                Настройки
-            </div>
-            <!-- лейблы -->
-            <form action="/registration" method="POST">
-                <div class="form__fields">
-                    <div class="form__element">
-                        <div class="form__row clearfix"> 
+        <section class="container form_content">
+            <!-- условия -->
+            <section class="condition">
+                <div class="form">
+                    <div class="form__title">
+                        Условия
+                    </div>
+                    <form action="" method="POST">
+                        <div class="form_condition">
                             <label class="form__log">
                                 <div class="form__field-title" > 
-                                    Telegram
+                                    Название
                                 </div>
-                                <input type="text" class="form__input-text" placeholder="Telegram" name = "">
-                            </label>   
+                                <input type="text" class="form__input-text" placeholder="Введите название сбытия" name = "">
+                            </label>  
                             <label class="form__log">
                                 <div class="form__field-title" > 
-                                    Событие
+                                    Если:
                                 </div>
-                                <input type="text" class="form__input-text" placeholder="Событие" name = "">
-                            </label>   
-                        </div>
-                        <div class="form__row">
-                            <label class="form__textaria-label">
-                                <div class="form__field-title">
-                                    Текст 
+                                <select class="form__input-text" >
+                                    <option>Lorem ipsum dolor sit amet.</option>                                
+                                    <option>Lorem ipsum dolor sit amet.</option>                               
+                                    <option>Lorem ipsum dolor sit amet.</option>                               
+                                    <option>Lorem ipsum dolor sit amet.</option>                               
+                                    <option>Lorem ipsum dolor sit amet.</option>
+                                    </select>
+                            </label> 
+                            <label class="form__log">
+                                <div class="form__field-title" > 
+                                    Действие:
                                 </div>
-                                <textarea  class="form__texterea" placeholder="Текст" name = ""></textarea>
-                            </label>
+                                <select class="form__input-text" >
+                                    <option>Lorem ipsum dolor sit amet.</option>                                
+                                    <option>Lorem ipsum dolor sit amet.</option>                               
+                                    <option>Lorem ipsum dolor sit amet.</option>                               
+                                    <option>Lorem ipsum dolor sit amet.</option>                               
+                                    <option>Lorem ipsum dolor sit amet.</option>
+                                    </select>
+                            </label> 
+                            <div class="form__btns">
+                                <div class="form__controls">
+                                    <div class="form__controls-btns clearfix">
+                                        <div class="form__controls-right">
+                                            <button type="submit" value="Отправить" class="form__submit" name="" >Добавить</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
                         </div>
+                    </form>
+                </div>
+            </section>
+            <!-- лист событий -->
+            <section class="events">
+                <section class="form">
+                    <div class="form__title">
+                        Лист событий
+                    </div>                    
+                    <form action="" method="POST">
+                        <ul class="events_list">
+                            <li class="events_item">
+                                <p>qwe</p>
+                                <div class="cl-btn-7"></div>
+                            </li>
+                        </ul>
+                    </form>
+                </section>
+            </section>         
+            <!-- лист телеги -->
+            <section class="telegram">
+                <div class="form">
+                    <div class="form__title">
+                        Ваш telegram
+                    </div>
+                    <form action="" method="POST">
+                        <label class="form__log">
+                            <input type="text" class="form__input-text" placeholder="Логин" name = "">
+                        </label> 
                         <div class="form__btns">
                             <div class="form__controls">
                                 <div class="form__controls-btns clearfix">
-                                    <!-- <div class="form__container-left">
-                                        <p class="form__field-title">
-                                            Пол
-                                        </p>
-                                        <div class="form__controls-left">
-                                            <label class="form__radio">
-                                                <input type="radio" name="review" class="form__radio-elem" checked>
-                                                <div class="form__radio-fake"></div>
-                                                <div class="form__radio-text">Муж.</div>
-                                            </label>
-                                            <label class="form__radio">
-                                                <input type="radio" name="review" class="form__radio-elem" >
-                                                <div class="form__radio-fake"></div>
-                                                <div class="form__radio-text ">Жен.</div>
-                                            </label>
-                                        </div>
-                                    </div>     -->
                                     <div class="form__controls-right">
-                                        <button type="submit" value="Отправить" class="form__submit" name="" >Создать</button>
+                                        <button type="submit" value="Отправить" class="form__submit" name="" >Изменить</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </section>
         </section>
+        
     </div>
 
     <!-- заглушка -->
     <footer class="footer clearfix">
         <div class="container">
             <div class="footer-q clearfix">
-                <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО" Автор работы: <b class="footer-text_name">Трухачев Сергей и Подшивалов Денис</b> </p>
+                <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО"  <b class="footer-text_name"></b> </p>
             </div>
             <div class="footer-q clearfix">
                 <a href="/" class="logo-text">j.a.r.v.i.s</a>

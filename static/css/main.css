@@ -4,9 +4,7 @@
 @import "components/footer.css";
 @import "components/header.css";
 
-
-
-/* главная */
+/* главная-- */
 
 .hero_con {
   padding-top: 100px;
@@ -233,18 +231,34 @@
     transform:  rotate(720deg);
   }
 }
-/* 
-* Отзывы
-*/
 
+
+/* 
+* контент
+*/
+.form_content {
+  display: flex;
+}
+/* условия */
+.condition {
+  width: 35%;
+  margin-right: 20px;
+}
+.events {
+  width: 45%;
+  margin-right: 20px;
+}
+.telegram {
+  width: 20%;
+}
 
 
 
 .form {
-  width: 700px;
+  
   background: #f5f5f5;
   border-radius: 3px;
-  padding: 45px 70px;
+  padding: 45px 20px;
   margin: 0 auto;
   margin-top: 35px;
   margin-bottom: 35px;
@@ -252,7 +266,7 @@
 
 .form__title {
   color: #221f1f;
-  font-size: 35px;
+  font-size: 23px;
   font-weight: bold;
   margin-bottom: 25px;
 }
@@ -263,7 +277,7 @@
 }
 .form__log {
   display: block; 
-  width: 560px;
+  width: 100%;
 }
 /* только в списках к первому элементу добавить справа 20р */
 .form__cell:first-child {
@@ -382,4 +396,54 @@
   .form__submit:hover {
     background: #f89513;
   }
- 
+ /* евенты
+  */
+
+  .events_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* крест */
+
+ .cl-btn-7 {
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+  }
+  .cl-btn-7:before {
+      content: '+';
+      color: #535557;
+      position: absolute;
+      z-index: 2;
+      transform: rotate(45deg);
+      font-size: 50px;
+      line-height: 1;
+      top: -5px;
+      left: 6px;
+      transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+  }
+  .cl-btn-7:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background: #535557;
+      z-index: 1;
+      transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+      transform: scale(0.01);
+  }
+  .cl-btn-7:hover:after {
+      transform: scale(1);
+  }
+  .cl-btn-7:hover:before {
+      transform: scale(0.8) rotate(45deg);
+      color: #fff;
+  }
+
