@@ -1,9 +1,12 @@
-from flask import render_template, request
-from db_routing import app
+from flask import Flask, render_template, request
 import db_routing
 from flask_httpauth import HTTPBasicAuth
 import os
 import hashlib
+
+
+app = Flask(__name__, static_folder='static', template_folder='templates')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 
 
 if not os.path.exists('./data.db'):
@@ -21,16 +24,17 @@ def register():
     if request.method == 'POST':
         userLogin = request.form['UserLogin']
         userPassw = request.form['UserPassw']
-        db_routing.add_user(userLogin, passw_hash(userPassw))
+        if db_routing.add_user(userLogin, passw_hash(userPassw)):
+            return render_template('content.html')
     return render_template('registration.html')
 
 
 @auth.verify_password
 def verify_password(user_login, user_passw):
-    user = db_routing.find_user(user_login)
-    if user:
-        userSalt = user[2][:32]
-        if passw_hash(user_passw, userSalt) == user[2]:
+    User = db_routing.find_user(user_login)
+    if User:
+        userSalt = User.UserPassw[:32]
+        if passw_hash(user_passw, userSalt) == User.UserPassw:
             return True
     else:
         return False
@@ -56,4 +60,4 @@ def passw_hash(user_passw, salt=os.urandom(32)):
 
 
 if __name__ == '__main__':
-    db_routing.app.run()
+    app.run()

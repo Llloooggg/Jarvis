@@ -1,9 +1,7 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from __init__ import app
 
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 db = SQLAlchemy(app)
 
 
@@ -19,8 +17,10 @@ def add_user(user_name, passw_hash):
         new_user = User(UserName=user_name, UserPassw=passw_hash)
         db.session.add(new_user)
         db.session.commit()
+        return True
     else:
         print('Логин занят')
+        return False
 
 
 def find_user(user_name):
