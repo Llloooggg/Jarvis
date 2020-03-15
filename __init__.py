@@ -9,9 +9,9 @@ login_manager = LoginManager(app)
 
 
 @login_manager.user_loader
-def load_user(user):
-    user_id = user.UserID
-    return user_id
+def load_user(user_id):
+    userID = db_routing.find_user(id=user_id).UserID
+    return userID
 
 
 @app.route('/', methods=['GET'])
@@ -22,21 +22,22 @@ def index():
 @app.route('/registration', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        userLogin = request.form['RegUserLogin']
+        userName = request.form['RegUserLogin']
         userPassw = request.form['RegUserPassw']
-        if db_routing.add_user(userLogin, passw_hash(userPassw)):
-            return redirect('/content')
+        if db_routing.add_user(userName, passw_hash(userPassw)):
+            login_user(db_routing.find_user(username=userName))
+            return redirect('content.html')
     return render_template('registration.html')
 
 
 @app.route('/login', methods=['POST'])
 def login():
-    userLogin = request.form['LogUserLogin']
+    userName = request.form['LogUserLogin']
     userPassw = request.form['LogUserPassw']
-    user = verify_password(userLogin, userPassw)
+    user = verify_password(userName, userPassw)
     if user:
         login_user(user)
-        return redirect('/content')
+        return render_template('content.html')
 
 
 @app.route('/content', methods=['GET'])
@@ -58,11 +59,11 @@ def passw_hash(user_passw, salt=os.urandom(32)):
     return storage
 
 
-def verify_password(user_login, user_passw):
-    User = db_routing.find_user(user_login)
+def verify_password(username, password):
+    User = db_routing.find_user(username=username)
     if User:
-        userSalt = User.UserPassw[:32]
-        if passw_hash(user_passw, userSalt) == User.UserPassw:
+        userSalt = User.password[:32]
+        if passw_hash(password, userSalt) == User.password:
             return User
     else:
         print('Неверный пароль')

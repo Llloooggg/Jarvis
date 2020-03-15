@@ -22,22 +22,20 @@
                 <div class="header_right">
                     <div class="contacts">
                         <div class="drop">                   
-                            <div href="" class="contacts__schedule">Войти</div>
+                            <div class="contacts__schedule">Войти</div>
                             <div class="dropdown">
-                                <form action="" method="POST">
-                                    <div class="drop-block">                                        
+                                <div class="drop-block">
+                                    <form action="/login" method="POST">
                                         <div class="triangle"></div>
                                         <label class="form__cell-header ">
                                             <input type="text" class="form__input-text-mod" placeholder="Логин" name= "LogUserLogin">
                                         </label>
                                         <label class="form__cell-header">
-                                            <input type="password" class="form__input-text-mod" placeholder="Пароль" name= "LogUserLogin">
+                                            <input type="password" class="form__input-text-mod" placeholder="Пароль" name= "LogUserPassw">
                                         </label>
-                                        <a href="/login" class="input">
-                                            <input type="button" href="/login" name="LogButton" class="header_btn" value="Войти" >
-                                        </a> 
-                                    </div>
-                                </form>
+                                        <button type="submit" value="Войти" class="header_btn" name="LogButton" >Вход</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +61,7 @@
                                 <p class="text_content">Ваш индивидуальный помощник на каждый день</p>
                             </div>
                             <div class="input-button">
-                                <a href="" class="input">
+                                <a href="/registration" class="input">
                                     <input type="button" href="/registration" name="scriptbutton" class="welcome__btn" value="Регистрация" >
                                 </a>
                         </div>
