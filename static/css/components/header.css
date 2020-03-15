@@ -222,12 +222,18 @@
 .header_btn:hover {
 	background: #834c05;
 }
-/* выпадашка в регистрации */
+/* контент */
+.contacts__schedule_mod {
+    padding: 14px 0;
+}
 .drop:hover .dropdown_mod {
-    left: -80px;
+    left: -25px;
 }
 
 .triangle_mod {
-    left: 81%;
-    bottom: 88%;
+    left: 73%;
+    bottom: 81%;
+}
+.header_btn_mod {
+    margin: 0 40px;
 }
