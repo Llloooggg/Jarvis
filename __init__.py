@@ -1,5 +1,6 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_simplelogin import SimpleLogin
 import os
 import hashlib
 import sqlite3
@@ -14,7 +15,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/registraion', methods=['GET', 'POST'])
+@app.route('/registration', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         UserLogin = request.form['UserLogin']
@@ -22,6 +23,7 @@ def register():
         if not find_user_copy(UserLogin):
             db.session.add(UserLogin, passw_hash(UserPass))
             db.session.commit()
+        # return render_template('your_page.html')
     return render_template('registration.html')
 
 
@@ -50,10 +52,6 @@ def passw_hash(user_passw):
     # salt_from_storage = storage[:32]  # 32 длина соли
     # key_from_storage = storage[32:]
     return storage
-
-# @app.route('/login', methods=['GET'])
-# def login():
-#    return render_template('login.html')
 
 
 if __name__ == '__main__':
