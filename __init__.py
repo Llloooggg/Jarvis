@@ -5,12 +5,11 @@ import os
 import hashlib
 
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-
-
 if not os.path.exists('./data.db'):
     db_routing.db.create_all()
+
+app = Flask('Jarvis', static_folder='static', template_folder='templates')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 auth = HTTPBasicAuth()
 
 
