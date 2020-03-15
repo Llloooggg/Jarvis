@@ -1,0 +1,29 @@
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.not_found {
+    color: #f9b43b;
+    font-family: 'Gagalin';
+    padding-left: 100px;
+}
+.not_found-title {
+    font-size: 220px;
+    font-weight: 400;
+    line-height: 1.42;
+    margin: 0;
+}
+.not_found-text {
+    font-size: 79px;
+    font-weight: 400;
+    line-height: 1.42;
+    margin: 0;
+
+}
+.not_found-img {
+    height: 571px;
+}
+.img404 {
+    height: 100%;
+}

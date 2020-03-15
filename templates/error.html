@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jarvis</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/main.css') }}">
+</head>
+
+<body>
+    <div class="wrapper">
+<!-- header -->
+        <header class="header">
+            <div class="container clearfix">
+                <div class="header_left clearfix">
+                    <a href="/" class="logo-decor">
+                        <img class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
+                        <p class="logo-text">J.a.r.v.i.s </p>
+                    </a>
+                </div>
+                <div class="header_right">
+                    <div class="contacts">
+                        <div class="drop">                   
+                            <a href="" class="contacts__schedule">Нужна помощь?</a>
+
+                             <div class="dropdown dropdown_mod">
+                                <div class="drop-block drop-block_mod">
+                                    <div class="triangle triangle_mod"></div>
+                                    <p>Обратитесь в службу поддержки по адресу:<b>jarvis@mail.ru</b> </p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        
+        <section class="container error">
+            <div class="not_found">
+                <h1 class="not_found-title">404</h1>
+                <h2 class="not_found-text">not found</h2>
+
+            </div>
+            <div class="not_found-img">
+                <img src="../static/img/pngfuel.com.png" alt="" class="img404">
+                
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- заглушка -->
+    <footer class="footer clearfix">
+        <div class="container">
+            <div class="footer-q clearfix">
+                <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО"  <b class="footer-text_name"></b> </p>
+            </div>
+            <div class="footer-q clearfix">
+                <a href="/" class="logo-text">j.a.r.v.i.s</a>
+            </div>
+            <div class="footer-q clearfix">
+                <p class="footer-messeger_text">Наши социальные сети</p>
+                <ul class="footer-messeger">
+                    <li class="footer-messeger__item ">
+                        <a href="" class="footer-messeger__link">
+                            <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon" alt="">
+                        </a>
+                    </li>
+                    <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link ">
+                            <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon" alt="">
+                        </a>
+                    </li>
+                    <li class="footer-messeger__item">
+                        <a href="" class="footer-messeger__link">
+                            <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon" alt="">
+                        </a>
+                    </li>
+                    <li class="footer-messeger__item">
+                        <a href="" class="footer-messeger__link">
+                            <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon" alt="">
+                        </a>
+                    </li>
+                    <li class="footer-messeger__item">
+                        <a href="" class="footer-messeger__link">
+                            <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon" alt="">
+                        </a>   
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
