@@ -19,6 +19,8 @@ def add_user(user_name, passw_hash):
         new_user = User(UserName=user_name, UserPassw=passw_hash)
         db.session.add(new_user)
         db.session.commit()
+    else:
+        print('Логин занят')
 
 
 def find_user(user_name):

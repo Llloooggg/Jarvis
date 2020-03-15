@@ -22,8 +22,6 @@ def register():
         userLogin = request.form['UserLogin']
         userPassw = request.form['UserPassw']
         db_routing.add_user(userLogin, passw_hash(userPassw))
-    else:
-        print('Логин занят')
     return render_template('registration.html')
 
 
