@@ -10,7 +10,7 @@ login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    userID = db_routing.find_user(id=user_id).UserID
+    userID = db_routing.find_user(id=user_id).id
     return userID
 
 
