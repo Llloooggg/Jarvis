@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jarvis</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/main.css') }}">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <header class="header">
             <div class="container clearfix">
                 <div class="header_left clearfix">
-                    <a href="/" class="logo-decor">
+                    <a class="logo-decor">
                         <img class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
                         <p class="logo-text">J.a.r.v.i.s </p>
                     </a>
@@ -32,8 +32,8 @@
                                     <label class="form__cell-header">
                                         <input type="password" class="form__input-text-mod" placeholder="Пароль">
                                     </label>
-                                    <a href="" class="input">
-                                        <input type="button" href="/content.html" name="scriptbutton" class="header_btn" value="Войти" >
+                                    <a href="/login" class="input">
+                                        <input type="button" href="/login" name="scriptbutton" class="header_btn" value="Войти" >
                                     </a> 
                                 </div>
                             </div>

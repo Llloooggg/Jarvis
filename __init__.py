@@ -1,16 +1,17 @@
-from flask import Flask, render_template, request
+from flask import render_template, request, redirect
 import db_routing
-from flask_httpauth import HTTPBasicAuth
+from flask_login import LoginManager, current_user, login_user, login_required
+from db_routing import app, db
 import os
 import hashlib
 
+login_manager = LoginManager(app)
 
-if not os.path.exists('./data.db'):
-    db_routing.db.create_all()
 
-app = Flask('Jarvis', static_folder='static', template_folder='templates')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-auth = HTTPBasicAuth()
+@login_manager.user_loader
+def load_user(user):
+    user_id = user.UserID
+    return user_id
 
 
 @app.route('/', methods=['GET'])
@@ -21,26 +22,25 @@ def index():
 @app.route('/registration', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        userLogin = request.form['UserLogin']
-        userPassw = request.form['UserPassw']
+        userLogin = request.form['RegUserLogin']
+        userPassw = request.form['RegUserPassw']
         if db_routing.add_user(userLogin, passw_hash(userPassw)):
-            return render_template('content.html')
+            return redirect('/content')
     return render_template('registration.html')
 
 
-@auth.verify_password
-def verify_password(user_login, user_passw):
-    User = db_routing.find_user(user_login)
-    if User:
-        userSalt = User.UserPassw[:32]
-        if passw_hash(user_passw, userSalt) == User.UserPassw:
-            return True
-    else:
-        return False
+@app.route('/login', methods=['POST'])
+def login():
+    userLogin = request.form['LogUserLogin']
+    userPassw = request.form['LogUserPassw']
+    user = verify_password(userLogin, userPassw)
+    if user:
+        login_user(user)
+        return redirect('/content')
 
 
 @app.route('/content', methods=['GET'])
-@auth.login_required
+@login_required
 def content():
     return render_template('content.html')
 
@@ -58,5 +58,18 @@ def passw_hash(user_passw, salt=os.urandom(32)):
     return storage
 
 
+def verify_password(user_login, user_passw):
+    User = db_routing.find_user(user_login)
+    if User:
+        userSalt = User.UserPassw[:32]
+        if passw_hash(user_passw, userSalt) == User.UserPassw:
+            return User
+    else:
+        print('Неверный пароль')
+        return False
+
+
 if __name__ == '__main__':
+    if not os.path.exists('./data.db'):
+        db.create_all()
     app.run()
