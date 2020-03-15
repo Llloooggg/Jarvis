@@ -22,20 +22,22 @@
                 <div class="header_right">
                     <div class="contacts">
                         <div class="drop">                   
-                            <a href="" class="contacts__schedule">Войти</a>
+                            <div href="" class="contacts__schedule">Войти</div>
                             <div class="dropdown">
-                                <div class="drop-block">
-                                    <div class="triangle"></div>
-                                    <label class="form__cell-header ">
-                                        <input type="text" class="form__input-text-mod" placeholder="Логин" >
-                                    </label>
-                                    <label class="form__cell-header">
-                                        <input type="password" class="form__input-text-mod" placeholder="Пароль">
-                                    </label>
-                                    <a href="" class="input">
-                                        <input type="button" href="/content.html" name="scriptbutton" class="header_btn" value="Войти" >
-                                    </a> 
-                                </div>
+                                <form action="" method="POST">
+                                    <div class="drop-block">
+                                        <div class="triangle"></div>
+                                        <label class="form__cell-header ">
+                                            <input type="text" class="form__input-text-mod" placeholder="Логин" name= "LogUserLogin">
+                                        </label>
+                                        <label class="form__cell-header">
+                                            <input type="password" class="form__input-text-mod" placeholder="Пароль" name= "LogUserLogin">
+                                        </label>
+                                        <a href="" class="input">
+                                            <input type="button" href="/content.html" name="LogButton" class="header_btn" value="Войти" >
+                                        </a> 
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -73,13 +75,13 @@
                                 <div class="form__field-title">  
                                     Введите логин     
                                 </div>
-                                <input type="text" class="form__input-text" placeholder="Введите логин" name = "UserLogin">
+                                <input type="text" class="form__input-text" placeholder="Введите логин" name = "RegUserLogin">
                             </label> 
                             <label class="form__log">
                                 <div class="form__field-title" > 
                                     Введите пароль
                                 </div>
-                                <input type="password" class="form__input-text" placeholder="Введите пароль" name = "UserPassw">
+                                <input type="password" class="form__input-text" placeholder="Введите пароль" name = "RegUserPassw">
                             </label>   
                         </div>
                         <div class="form__btns">
