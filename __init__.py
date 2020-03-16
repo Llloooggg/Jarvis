@@ -4,6 +4,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user
 from db_routing import app, db
 import os
 import hashlib
+from re import match
 
 login_manager = LoginManager(app)
 
@@ -23,9 +24,10 @@ def register():
     if request.method == 'POST':
         userName = request.form['RegUserLogin']
         userPassw = request.form['RegUserPassw']
-        if db_routing.add_user(userName, passw_hash(userPassw)):
-            login_user(db_routing.find_user(username=userName))
-            return redirect(url_for('workshop'))
+        if string_check(userName) and string_check(userPassw):
+            if db_routing.add_user(userName, passw_hash(userPassw)):
+                login_user(db_routing.find_user(username=userName))
+                return redirect(url_for('workshop'))
     return render_template('registration.html')
 
 
@@ -33,10 +35,16 @@ def register():
 def login():
     userName = request.form['LogUserLogin']
     userPassw = request.form['LogUserPassw']
-    user = verify_password(userName, userPassw)
-    if user:
-        login_user(user)
-        return redirect(url_for('workshop'))
+    if string_check(userName) and string_check(userPassw):
+        user = verify_password(userName, userPassw)
+        if user:
+            login_user(user)
+            return redirect(url_for('workshop'))
+        else:
+            return redirect(url_for('register'))
+
+    else:
+        return redirect(url_for('register'))
 
 
 @app.route('/logout')
@@ -51,9 +59,20 @@ def workshop():
     return render_template('workshop.html')
 
 
-@app.errorhandler(404)
-def not_found(error):
+@app.errorhandler(Exception)
+def universal_error(error):
     return render_template('error.html'), 404
+
+
+def string_check(string):
+    if 2 < len(string) < 7:
+        if match('^[0-9A-Za-z]*$', string) and not ('\\' in string):
+            return True
+    else:
+        print(
+            'Некорректный ввод! Строка должно включать только английские буквы или цифры. Содержать не менее 3 и не '
+            'более 6 символов')
+        return False
 
 
 def passw_hash(user_passw, salt=os.urandom(32)):
@@ -66,6 +85,7 @@ def passw_hash(user_passw, salt=os.urandom(32)):
 
 def verify_password(username, password):
     User = db_routing.find_user(username=username)
+    print(User)
     if User:
         userSalt = User.password[:32]
         if passw_hash(password, userSalt) == User.password:

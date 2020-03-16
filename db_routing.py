@@ -14,7 +14,6 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
-
     def __init__(self, username, password):
         self.username = username
         self.password = password
@@ -49,7 +48,7 @@ class Scenario(db.Model):
     owner_id = db.Column(db.Integer, ForeignKey('Users.id'))
     trigger_id = db.Column(db.Integer, ForeignKey('Triggers.id'))
     trigger_args = db.Column(db.String(200))
-    action_id = db.Column(db.Integer, ForeignKey('Action.id'))
+    action_id = db.Column(db.Integer, ForeignKey('Actions.id'))
     action_args = db.Column(db.String(200))
 
 
@@ -70,4 +69,5 @@ def find_user(id=None, username=None):
     if username:
         return User.query.filter_by(username=username).first()
 
-#def get_trigers():
+
+# def get_trigers():
