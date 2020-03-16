@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
 from flask import Flask
 
 app = Flask('Jarvis', static_folder='static', template_folder='templates')
@@ -12,6 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
+
 
     def __init__(self, username, password):
         self.username = username
@@ -31,21 +33,24 @@ class Trigger(db.Model):
     __tablename__ = 'Triggers'
     id = db.Column(db.Integer, primary_key=True)
     triggername = db.Column(db.String(80), unique=True, nullable=False)
-    triggerargs = db.Column(db.String(200))
+    trigger_def = db.Column(db.String(200))
 
 
 class Action(db.Model):
     __tablename__ = 'Actions'
     id = db.Column(db.Integer, primary_key=True)
     actionname = db.Column(db.String(80), unique=True, nullable=False)
-    actionargs = db.Column(db.String(200))
+    action_def = db.Column(db.String(200))
 
 
 class Scenario(db.Model):
     __tablename__ = 'Scenarios'
     id = db.Column(db.Integer, primary_key=True)
-    scenariotrigger = db.Column(db.Integer, nullable=False)
-    scenarioaction = db.Column(db.Integer, nullable=False)
+    owner_id = db.Column(db.Integer, ForeignKey('Users.id'))
+    trigger_id = db.Column(db.Integer, ForeignKey('Triggers.id'))
+    trigger_args = db.Column(db.String(200))
+    action_id = db.Column(db.Integer, ForeignKey('Action.id'))
+    action_args = db.Column(db.String(200))
 
 
 def add_user(user_name, passw_hash):
@@ -64,3 +69,5 @@ def find_user(id=None, username=None):
         return User.query.filter_by(id=id).first()
     if username:
         return User.query.filter_by(username=username).first()
+
+#def get_trigers():
