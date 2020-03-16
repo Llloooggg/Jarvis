@@ -171,6 +171,8 @@
     color: #c77814;
     opacity: .7;
     display: block;
+    padding: 27px 0;
+    padding-left: 8px;
 }
 
 .form__cell-header {
@@ -224,7 +226,8 @@
 }
 /* контент */
 .contacts__schedule_mod {
-    padding: 14px 0;
+    padding: 28px 0;
+    margin: 0;
 }
 .drop:hover .dropdown_mod {
     left: -25px;
