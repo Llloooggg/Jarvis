@@ -14,7 +14,7 @@
         <header class="header">
             <div class="container clearfix">
                 <div class="header_left clearfix">
-                    <a href="" class="logo-decor">
+                    <a href="/" class="logo-decor">
                         <img class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
                         <p class="logo-text">J.a.r.v.i.s </p>
                     </a>
@@ -22,14 +22,13 @@
                 <div class="header_right">
                     <div class="contacts">
                         <div class="drop">                   
-                            <p href="" class="contacts__schedule contacts__schedule_mod">nagbator228#264</p>
+                            <p href="" class="contacts__schedule contacts__schedule_mod">{{ current_user.username }}</p>
                             <div class="dropdown dropdown_mod">
                                 <div class="drop-block drop-block_out">
                                     <div class="triangle triangle_mod"></div>
-                                    <!-- <a href="" class="input">
-                                        <input type="button" href="" name="LogOut" class="header_btn header_btn_mod" value="Выйти" >
-                                    </a>  -->
+                                    <a href="/logout" class="input">
                                     <button type="submit" value="Выйти" class="header_btn" name="LogOut" >Выход</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 import db_routing
-from flask_login import LoginManager, current_user, login_user, login_required
+from flask_login import LoginManager, login_user, login_required, logout_user
 from db_routing import app, db
 import os
 import hashlib
@@ -10,8 +10,7 @@ login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    userID = db_routing.find_user(id=user_id).id
-    return userID
+    return db_routing.find_user(id=user_id)
 
 
 @app.route('/', methods=['GET'])
@@ -26,7 +25,7 @@ def register():
         userPassw = request.form['RegUserPassw']
         if db_routing.add_user(userName, passw_hash(userPassw)):
             login_user(db_routing.find_user(username=userName))
-            return redirect('content.html')
+            return redirect(url_for('workshop'))
     return render_template('registration.html')
 
 
@@ -37,18 +36,24 @@ def login():
     user = verify_password(userName, userPassw)
     if user:
         login_user(user)
-        return render_template('content.html')
+        return redirect(url_for('workshop'))
 
 
-@app.route('/content', methods=['GET'])
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('/'))
+
+
+@app.route('/workshop', methods=['GET'])
 @login_required
-def content():
-    return render_template('content.html')
+def workshop():
+    return render_template('workshop.html')
 
 
-# @app.errorhandler(404)
-# def not_found(error):
-#     return render_template('404.html'), 404
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('error.html'), 404
 
 
 def passw_hash(user_passw, salt=os.urandom(32)):
