@@ -33,3 +33,11 @@ body {
     display: block;
     height: 77px;
   }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  p {
+    margin: 0;
+  }
