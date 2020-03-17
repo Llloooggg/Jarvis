@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 import db_routing
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from db_routing import app, db
 import os
 import hashlib
@@ -11,7 +11,7 @@ login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return db_routing.find_user(id=user_id)
+    return db_routing.get_user(id=user_id)
 
 
 @app.route('/', methods=['GET'])
@@ -20,13 +20,15 @@ def index():
 
 
 @app.route('/registration', methods=['GET', 'POST'])
-def register():
+def registration():
     if request.method == 'POST':
         userName = request.form['RegUserLogin']
         userPassw = request.form['RegUserPassw']
         if string_check(userName) and string_check(userPassw):
+            print('попытка регистрации')
             if db_routing.add_user(userName, passw_hash(userPassw)):
-                login_user(db_routing.find_user(username=userName))
+                print(db_routing.get_user(username=userName))
+                login_user(db_routing.get_user(username=userName))
                 return redirect(url_for('workshop'))
     return render_template('registration.html')
 
@@ -41,10 +43,10 @@ def login():
             login_user(user)
             return redirect(url_for('workshop'))
         else:
-            return redirect(url_for('register'))
+            return redirect(url_for('registration'))
 
     else:
-        return redirect(url_for('register'))
+        return redirect(url_for('registration'))
 
 
 @app.route('/logout')
@@ -56,12 +58,16 @@ def logout():
 @app.route('/workshop', methods=['GET'])
 @login_required
 def workshop():
-    return render_template('workshop.html')
+    triggers_list = db_routing.get_trigers()
+    actions_list = db_routing.get_actions()
+    user_scripts_list = db_routing.get_user_scripts(current_user.get_id())
+    return render_template('workshop.html', triggers_list=triggers_list, actions_list=actions_list,
+                           user_scripts_list=user_scripts_list)
 
 
-@app.errorhandler(Exception)
-def universal_error(error):
-    return render_template('error.html'), 404
+# @app.errorhandler(Exception)
+# def universal_error(error):
+#     return render_template('error.html'), 404
 
 
 def string_check(string):
@@ -84,8 +90,7 @@ def passw_hash(user_passw, salt=os.urandom(32)):
 
 
 def verify_password(username, password):
-    User = db_routing.find_user(username=username)
-    print(User)
+    User = db_routing.get_user(username=username)
     if User:
         userSalt = User.password[:32]
         if passw_hash(password, userSalt) == User.password:

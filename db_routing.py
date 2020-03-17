@@ -13,10 +13,12 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
+    telegram_username = db.Column(db.String(80), unique=True)
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, telegram_username=None):
         self.username = username
         self.password = password
+        self.telegram_username = telegram_username
 
     def is_active(self):
         return True
@@ -31,15 +33,15 @@ class User(db.Model):
 class Trigger(db.Model):
     __tablename__ = 'Triggers'
     id = db.Column(db.Integer, primary_key=True)
-    triggername = db.Column(db.String(80), unique=True, nullable=False)
-    trigger_def = db.Column(db.String(200))
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    def_name = db.Column(db.String(200))
 
 
 class Action(db.Model):
     __tablename__ = 'Actions'
     id = db.Column(db.Integer, primary_key=True)
-    actionname = db.Column(db.String(80), unique=True, nullable=False)
-    action_def = db.Column(db.String(200))
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    def_nme = db.Column(db.String(200))
 
 
 class Scenario(db.Model):
@@ -53,7 +55,7 @@ class Scenario(db.Model):
 
 
 def add_user(user_name, passw_hash):
-    if not find_user(user_name):
+    if not get_user(user_name):
         new_user = User(username=user_name, password=passw_hash)
         db.session.add(new_user)
         db.session.commit()
@@ -63,11 +65,23 @@ def add_user(user_name, passw_hash):
         return False
 
 
-def find_user(id=None, username=None):
+def get_user(id=None, username=None):
     if id:
         return User.query.filter_by(id=id).first()
     if username:
         return User.query.filter_by(username=username).first()
 
 
-# def get_trigers():
+def get_trigers():
+    triggers_list = Trigger.query.all()
+    return triggers_list
+
+
+def get_actions():
+    actions_list = Action.query.all()
+    return actions_list
+
+
+def get_user_scripts(current_user_id):
+    user_scripts_list = Scenario.query.filter_by(owner_id=current_user_id).all()
+    return user_scripts_list

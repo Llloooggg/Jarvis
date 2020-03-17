@@ -56,11 +56,9 @@
                                     Условие:
                                 </div>
                                 <select class="form__input-text" >
-                                    <option>Lorem ipsum dolor sit amet.</option>                                
-                                    <option>Lorem ipsum dolor sit amet.</option>                               
-                                    <option>Lorem ipsum dolor sit amet.</option>                               
-                                    <option>Lorem ipsum dolor sit amet.</option>                               
-                                    <option>Lorem ipsum dolor sit amet.</option>
+                                    {% for trigger in triggers_list %}
+                                        <option>{{ trigger.name }}</option>
+                                    {% endfor %}
                                     </select>
                             </label> 
                             <label class="form__log">
@@ -68,11 +66,9 @@
                                     Действие:
                                 </div>
                                 <select class="form__input-text" >
-                                    <option>Lorem ipsum dolor sit amet.</option>                                
-                                    <option>Lorem ipsum dolor sit amet.</option>                               
-                                    <option>Lorem ipsum dolor sit amet.</option>                               
-                                    <option>Lorem ipsum dolor sit amet.</option>                               
-                                    <option>Lorem ipsum dolor sit amet.</option>
+                                    {% for action in actions_list %}
+                                        <option>{{ action.name }}</option>
+                                    {% endfor %}
                                     </select>
                             </label> 
                             <div class="form__btns">
@@ -96,18 +92,12 @@
                     </div>                    
                     <form action="" method="POST">
                         <ul class="events_list">
-                            <li class="events_item">
-                                <p>Lorem ipsum dolor sit.</p>
-                                <div class="cl-btn-7"></div>
-                            </li>
-                            <li class="events_item">
-                                <p>Lorem, ipsum.</p>
-                                <div class="cl-btn-7"></div>
-                            </li>
-                            <li class="events_item">
-                                <p>Lorem ipsum dolor sit.</p>
-                                <div class="cl-btn-7"></div>
-                            </li>
+                            {% for user_script in user_scripts_list%}
+                                <li class="events_item">
+                                    <p>{{ user_scripts.name }}</p>
+                                    <div class="cl-btn-7"></div>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </form>
                 </section>
