@@ -67,7 +67,8 @@ def workshop():
                                     actionArgs)
             return redirect(url_for('workshop'))
 
-        # if 'NewScenarioName' in request.form:
+        if 'NewScenarioName' in request.form:
+            print('писька коня')
 
         if 'TGUsername' in request.form:
             new_tg_username = request.form['TGUsername']

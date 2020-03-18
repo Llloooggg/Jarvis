@@ -62,7 +62,12 @@
                                         <option>{{ trigger.name }}</option>
                                     {% endfor %}
                                     </select>
-                            </label> 
+                            </label>
+                            <div class="form__row">
+                                <label class="form__textaria-label">
+                                    <textarea  class="form__texterea" placeholder="Введине указания" name = "TriggerArgs"></textarea>
+                                </label>
+                            </div>
                             <label class="form__log">
                                 <div class="form__field-title" > 
                                     Действие:
@@ -72,7 +77,12 @@
                                         <option>{{ action.name }}</option>
                                     {% endfor %}
                                     </select>
-                            </label> 
+                            </label>
+                            <div class="form__row">
+                                <label class="form__textaria-label">
+                                    <textarea  class="form__texterea" placeholder="Введине указания" name = "ActionArgs"></textarea>
+                                </label>
+                            </div>
                             <div class="form__btns">
                                 <div class="form__controls">
                                     <div class="form__controls-btns clearfix">
