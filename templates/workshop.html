@@ -51,13 +51,13 @@
                                 <div class="form__field-title" > 
                                     Название
                                 </div>
-                                <input type="text" class="form__input-text" placeholder="Введите название сбытия" name = "">
+                                <input type="text" class="form__input-text" placeholder="Введите название сбытия" name = "TitleEvent">
                             </label>  
                             <label class="form__log">
                                 <div class="form__field-title" > 
                                     Условие:
                                 </div>
-                                <select class="form__input-text" >
+                                <select class="form__input-text" name = "Triger">
                                     {% for trigger in triggers_list %}
                                         <option>{{ trigger.name }}</option>
                                     {% endfor %}
@@ -67,7 +67,7 @@
                                 <div class="form__field-title" > 
                                     Действие:
                                 </div>
-                                <select class="form__input-text" >
+                                <select class="form__input-text" name = "Triger">
                                     {% for action in actions_list %}
                                         <option>{{ action.name }}</option>
                                     {% endfor %}
@@ -77,7 +77,7 @@
                                 <div class="form__controls">
                                     <div class="form__controls-btns clearfix">
                                         <div class="form__controls-right">
-                                            <button type="submit" value="Отправить" class="form__submit" name="" >Добавить</button>
+                                            <button type="submit" value="Отправить" class="form__submit" name="SendEvent" >Добавить</button>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
             <section class="telegram">
                 <div class="form">
                     <div class="form__title">
-                        Ваш telegram
+                        Ваш Telegram
                     </div>
                     <form action="" method="POST">
                         <label class="form__log">
