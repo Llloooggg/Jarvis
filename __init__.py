@@ -55,9 +55,18 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/workshop', methods=['GET'])
+@app.route('/workshop', methods=['GET', 'POST'])
 @login_required
 def workshop():
+    """
+    if request.method == 'POST':
+        if request.form['NewSceanrio']:
+
+        if request.form['NewSceanrio']:
+
+        if request.form['NewSceanrio']:
+    """
+
     triggers_list = db_routing.get_trigers()
     actions_list = db_routing.get_actions()
     user_scripts_list = db_routing.get_user_scripts(current_user.get_id())
