@@ -39,43 +39,6 @@
  float: left;
     
 }
-.nav-menu {
-    list-style: none; /*убрать точки */
-    padding: 0%     ;
-
-}
-.nav-menu__item {
-    float: left;
-    width: 33%;
-    margin-left: 0px;
-}
-.nav-menu__link{
-    text-decoration: none; /*убрать подчеркивание в ссылке */
-    display: inline-block;
-}
-.nav-menu__icon, .nav-menu__text {
-    float: left;
-    width: 50%;
-}
-.nav-menu__icon {
-    margin-top: 11px;
-    margin-right: 10px;
-    width: 23px;
-    height: 23px;
-}
-.nav-menu__link:hover .nav-menu__text  {
-    color: #f89513;
-}
-.none  {
-    display: none;
-}
-.nav-menu__link:hover .none  {
-    display: inline-block;
-}
-.nav-menu__link:hover .not_none  {
-    display: none;
-}
-
 
 .nav-menu__text {
     font-size: 12px;

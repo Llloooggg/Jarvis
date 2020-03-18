@@ -242,7 +242,7 @@
 }
 /* условия */
 .condition {
-  width: 35%;
+  width: 32%;
   margin-right: 20px;
 }
 .events {
@@ -250,7 +250,9 @@
   margin-right: 20px;
 }
 .telegram {
-  width: 20%;
+  width: 23%;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -464,3 +466,12 @@
     background: #fff;
     
   }
+
+  
+.popup {
+  
+  display: none;
+  width: 400px;
+  border-radius: 13px;
+  text-align: center;
+}

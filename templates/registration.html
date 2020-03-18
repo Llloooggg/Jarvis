@@ -7,7 +7,9 @@
     <title>Jarvis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = './css/main.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/plugins/jquery.fancybox.css') }}">
     <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
+    
 </head>
 
 <body>
@@ -76,7 +78,7 @@
                                 <div class="form__controls">
                                     <div class="form__controls-btns clearfix">
                                         <div class="form__controls-right">
-                                            <button type="submit" value="Отправить" class="form__submit" name="RegButton" >Регистрация</button>
+                                            <button type="submit" value="Отправить" class="form__submit" name="RegButton">Регистрация</button>
                                         </div>
                                     </div>
                                 </div>
@@ -129,5 +131,14 @@
             </div>
         </div>
     </footer>
+    <!-- <a href="#" data-fancybox data-src="#test-popup">открыть всплывашку</a> -->
+    <div class="popup" id="test-popup">
+        <h1>Пользователь уже существует</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, totam aperiam. Fugit modi exercitationem eos itaque sequi molestiae, voluptates magnam?</p>
+        <a href="#" class="close welcome__btn ">Закрыть</a>
+      </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="{{ url_for('static', filename = './js/plugins/jquery.fancybox.min.js') }}"></script>
 </body>
 </html>
