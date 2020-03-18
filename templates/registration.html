@@ -13,123 +13,136 @@
 </head>
 
 <body>
-    <div class="wrapper">
-<!-- header-- -->
-        <header class="header">
-            <div class="container clearfix">
-                <div class="header_left clearfix">
-                    <a href="/" class="logo-decor">
-                        <img class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
-                        <p class="logo-text">J.a.r.v.i.s </p>
-                    </a>
-                </div>
-                <div class="header_right">
-                    <div class="contacts">
-                        <div class="drop">                   
-                            <div href="" class="contacts__schedule" onclick="activeClass();">Войти</div>
-                            <div class="dropdown" id="dropdown">
-                                <form action="" method="POST">
-                                    <div class="drop-block">
-                                        <div class="triangle"></div>
-                                        <label class="form__cell-header ">
-                                            <input type="text" class="form__input-text-mod" placeholder="Логин" name= "LogUserLogin">
-                                        </label>
-                                        <label class="form__cell-header">
-                                            <input type="password" class="form__input-text-mod" placeholder="Пароль" name= "LogUserPassw">
-                                        </label>
-                                        <a href="" class="input">
-                                            <input type="button" name="LogButton" class="header_btn" value="Войти" >
-                                        </a> 
-                                    </div>
-                                </form>
-                            </div>
+<div class="wrapper">
+    <!-- header-- -->
+    <header class="header">
+        <div class="container clearfix">
+            <div class="header_left clearfix">
+                <a href="/" class="logo-decor">
+                    <img class="logo_icon"
+                         src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
+                    <p class="logo-text">J.a.r.v.i.s </p>
+                </a>
+            </div>
+            <div class="header_right">
+                <div class="contacts">
+                    <div class="drop">
+                        <div href="" class="contacts__schedule" onclick="activeClass();">Войти</div>
+                        <div class="dropdown" id="dropdown">
+                            <form action="" method="POST">
+                                <div class="drop-block">
+                                    <div class="triangle"></div>
+                                    <label class="form__cell-header ">
+                                        <input type="text" class="form__input-text-mod" placeholder="Логин"
+                                               name="LogUserLogin">
+                                    </label>
+                                    <label class="form__cell-header">
+                                        <input type="password" class="form__input-text-mod" placeholder="Пароль"
+                                               name="LogUserPassw">
+                                    </label>
+                                    <a href="" class="input">
+                                        <input type="button" name="LogButton" class="header_btn" value="Войти">
+                                    </a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        
+        </div>
+    </header>
 
-        <div class="container">
-            <section class="form">
-                <div class="form__title">
-                    Создать аккаунт
-                </div>
-                <!-- лейблы -->
-                <form action="/registration" method="POST">
-                    <div class="form__fields">
-                        <div class="form__element">
-                            <div class="form__row clearfix">   
 
-                                <label class="form__log">
-                                    <div class="form__field-title">  
-                                        Введите логин     
-                                    </div>
-                                    <input type="text" class="form__input-text" placeholder="Введите логин" name = "RegUserLogin">
-                                </label> 
-                                <label class="form__log">
-                                    <div class="form__field-title" > 
-                                        Введите пароль
-                                    </div>
-                                    <input type="password" class="form__input-text" placeholder="Введите пароль" name = "RegUserPassw">
-                                </label>   
-                            </div>
-                            <div class="form__btns">
-                                <div class="form__controls">
-                                    <div class="form__controls-btns clearfix">
-                                        <div class="form__controls-right">
-                                            <button type="submit" value="Отправить" class="form__submit" name="RegButton">Регистрация</button>
-                                        </div>
+    <div class="container">
+        <section class="form">
+            <div class="form__title">
+                Создать аккаунт
+            </div>
+            <!-- лейблы -->
+            <form action="/registration" method="POST">
+                <div class="form__fields">
+                    <div class="form__element">
+                        <div class="form__row clearfix">
+
+                            <label class="form__log">
+                                <div class="form__field-title">
+                                    Введите логин
+                                </div>
+                                <input type="text" class="form__input-text" placeholder="Введите логин"
+                                       name="RegUserLogin">
+                            </label>
+                            <label class="form__log">
+                                <div class="form__field-title">
+                                    Введите пароль
+                                </div>
+                                <input type="password" class="form__input-text" placeholder="Введите пароль"
+                                       name="RegUserPassw">
+                            </label>
+                        </div>
+                        <div class="form__btns">
+                            <div class="form__controls">
+                                <div class="form__controls-btns clearfix">
+                                    <div class="form__controls-right">
+                                        <button type="submit" value="Отправить" class="form__submit" name="RegButton">
+                                            Регистрация
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </form>
         </section>
-       </div>
     </div>
+</div>
 
-    <!-- заглушка -->
-    <footer class="footer clearfix">
-        <div class="container">
-            <div class="footer-q clearfix">
-                <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО"  <b class="footer-text_name"></b> </p>
-            </div>
-            <div class="footer-q clearfix">
-                <a href="/" class="logo-text">j.a.r.v.i.s</a>
-            </div>
-            <div class="footer-q clearfix">
-                <p class="footer-messeger_text">Наши социальные сети</p>
-                <ul class="footer-messeger">
-                    <li class="footer-messeger__item ">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link ">
-                            <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                </ul>
-            </div>
+<!-- заглушка -->
+<footer class="footer clearfix">
+    <div class="container">
+        <div class="footer-q clearfix">
+            <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО" <b
+                    class="footer-text_name"></b></p>
         </div>
+        <div class="footer-q clearfix">
+            <a href="/" class="logo-text">j.a.r.v.i.s</a>
+        </div>
+        <div class="footer-q clearfix">
+            <p class="footer-messeger_text">Наши социальные сети</p>
+            <ul class="footer-messeger">
+                <li class="footer-messeger__item ">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link ">
+                        <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
     </footer>
     <!-- <a href="#" data-fancybox data-src="#test-popup">открыть всплывашку</a> -->
     <div class="popup" id="test-popup">

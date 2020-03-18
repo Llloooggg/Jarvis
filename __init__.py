@@ -67,8 +67,7 @@ def workshop():
                                     actionArgs)
             return redirect(url_for('workshop'))
 
-        if 'NewScenarioName' in request.form:
-            print('писька коня')
+        # if 'NewScenarioName' in request.form:
 
         if 'TGUsername' in request.form:
             new_tg_username = request.form['TGUsername']
@@ -81,7 +80,6 @@ def workshop():
     User = db_routing.get_user(id=current_user.get_id())
     if User:
         tg_username = User.tg_username
-        print(tg_username)
     else:
         tg_username = None
     return render_template('workshop.html', triggers_list=triggers_list, actions_list=actions_list,

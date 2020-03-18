@@ -48,7 +48,7 @@ class Scenario(db.Model):
     __tablename__ = 'Scenarios'
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, ForeignKey('Users.id'))
-    scenario_name = db.Column(db.String(80))
+    scenario_name = db.Column(db.String(80), nullable=False)
     trigger_id = db.Column(db.Integer, ForeignKey('Triggers.id'))
     trigger_args = db.Column(db.String(200))
     action_id = db.Column(db.Integer, ForeignKey('Actions.id'))
