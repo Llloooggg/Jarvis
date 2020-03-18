@@ -13,12 +13,12 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    telegram_username = db.Column(db.String(80), unique=True)
+    tg_username = db.Column(db.String(80), unique=True)
 
-    def __init__(self, username, password, telegram_username=None):
+    def __init__(self, username, password, tg_username=None):
         self.username = username
         self.password = password
-        self.telegram_username = telegram_username
+        self.tg_username = tg_username
 
     def is_active(self):
         return True
@@ -48,6 +48,7 @@ class Scenario(db.Model):
     __tablename__ = 'Scenarios'
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, ForeignKey('Users.id'))
+    scenario_name = db.Column(db.String(80))
     trigger_id = db.Column(db.Integer, ForeignKey('Triggers.id'))
     trigger_args = db.Column(db.String(200))
     action_id = db.Column(db.Integer, ForeignKey('Actions.id'))
@@ -63,6 +64,14 @@ def add_user(user_name, passw_hash):
     else:
         print('Логин занят')
         return False
+
+
+def add_scenario(owner_id, scenario_name, trigger_id, trigger_args, action_id, action_args):
+    new_scenario = Scenario(owner_id=owner_id, scenario_name=scenario_name, trigger_id=trigger_id,
+                            trigger_args=trigger_args, action_id=action_id, action_args=action_args)
+    db.session.add(new_scenario)
+    db.session.commit()
+    return new_scenario
 
 
 def get_user(id=None, username=None):
@@ -85,3 +94,15 @@ def get_actions():
 def get_user_scripts(current_user_id):
     user_scripts_list = Scenario.query.filter_by(owner_id=current_user_id).all()
     return user_scripts_list
+
+
+def delete_scenario(scenario_id):
+    scenario = Scenario.query.filter_by(id=scenario_id).first()
+    db.session.delete(scenario)
+    db.session.commit()
+
+
+def tg_username_update(current_user_id, new_tg_username):
+    current_user = User.query.filter_by(id=current_user_id).first()
+    current_user.tg_username = new_tg_username
+    db.session.commit()

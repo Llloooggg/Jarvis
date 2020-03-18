@@ -51,13 +51,13 @@
                                 <div class="form__field-title" > 
                                     Название
                                 </div>
-                                <input type="text" class="form__input-text" placeholder="Введите название сбытия" name = "TitleEvent">
+                                <input type="text" class="form__input-text" placeholder="Введите название сбытия" name = "NewScenarioName">
                             </label>  
                             <label class="form__log">
                                 <div class="form__field-title" > 
                                     Условие:
                                 </div>
-                                <select class="form__input-text" name = "Triger">
+                                <select class="form__input-text" name = "TriggerName">
                                     {% for trigger in triggers_list %}
                                         <option>{{ trigger.name }}</option>
                                     {% endfor %}
@@ -67,7 +67,7 @@
                                 <div class="form__field-title" > 
                                     Действие:
                                 </div>
-                                <select class="form__input-text" name = "Triger">
+                                <select class="form__input-text" name = "ActionName">
                                     {% for action in actions_list %}
                                         <option>{{ action.name }}</option>
                                     {% endfor %}
@@ -116,7 +116,11 @@
                     </div>
                     <form action="/workshop" name="Telegram" method="POST">
                         <label class="form__log">
-                            <input type="text" class="form__input-text" placeholder="Логин" name = "TelegUserLogin">
+                            {% if tg_username %}
+                                <input type="text" class="form__input-text" placeholder={{tg_username}} name = "TGUsername">
+                            {% else %}
+                                <input type="text" class="form__input-text" placeholder="Логин" name = "TGUsername">
+                            {% endif %}
                         </label> 
                         <div class="form__btns">
                             <div class="form__controls">

@@ -25,9 +25,7 @@ def registration():
         userName = request.form['RegUserLogin']
         userPassw = request.form['RegUserPassw']
         if string_check(userName) and string_check(userPassw):
-            print('попытка регистрации')
             if db_routing.add_user(userName, passw_hash(userPassw)):
-                print(db_routing.get_user(username=userName))
                 login_user(db_routing.get_user(username=userName))
                 return redirect(url_for('workshop'))
     return render_template('registration.html')
@@ -58,20 +56,35 @@ def logout():
 @app.route('/workshop', methods=['GET', 'POST'])
 @login_required
 def workshop():
-    """
     if request.method == 'POST':
-        if request.form['NewSceanrio']:
+        if 'NewScenarioName' in request.form:
+            newScenarioName = request.form['NewScenarioName']
+            triggerName = request.form['TriggerName']
+            triggerArgs = request.form['TriggerArgs']
+            actionName = request.form['ActionName']
+            actionArgs = request.form['ActionArgs']
+            db_routing.add_scenario(current_user.get_id(), newScenarioName, triggerName, triggerArgs, actionName,
+                                    actionArgs)
+            return redirect(url_for('workshop'))
 
-        if request.form['NewSceanrio']:
+        # if 'NewScenarioName' in request.form:
 
-        if request.form['NewSceanrio']:
-    """
+        if 'TGUsername' in request.form:
+            new_tg_username = request.form['TGUsername']
+            db_routing.tg_username_update(current_user.get_id(), new_tg_username)
+            return redirect(url_for('workshop'))
 
     triggers_list = db_routing.get_trigers()
     actions_list = db_routing.get_actions()
     user_scripts_list = db_routing.get_user_scripts(current_user.get_id())
+    User = db_routing.get_user(id=current_user.get_id())
+    if User:
+        tg_username = User.tg_username
+        print(tg_username)
+    else:
+        tg_username = None
     return render_template('workshop.html', triggers_list=triggers_list, actions_list=actions_list,
-                           user_scripts_list=user_scripts_list)
+                           user_scripts_list=user_scripts_list, tg_username=tg_username)
 
 
 # @app.errorhandler(Exception)
