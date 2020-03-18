@@ -150,6 +150,32 @@
                     </div>
                 </form>
             </div>
+            <div class="form">
+                <div class="form__title">
+                    Удалить событие
+                </div>
+                <form action="/workshop" name="" method="POST">
+                    <label class="form__log">
+                        <div class="form__field-title" > 
+                            Выберите событие
+                        </div>
+                        <select class="form__input-text" name = "">
+                            {% for trigger in triggers_list %}
+                                <option>{{ trigger.name }}</option>
+                            {% endfor %}
+                            </select>
+                    </label>
+                    <div class="form__btns">
+                        <div class="form__controls">
+                            <div class="form__controls-btns clearfix">
+                                <div class="form__controls-right">
+                                    <button type="submit" value="Удалить" class="form__submit" name="" >Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
         </section>
     </section>
 </div>
