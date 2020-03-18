@@ -2,11 +2,11 @@
 <html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Jarvis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = './css/main.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <link href="{{ url_for('static', filename = './css/main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='./img/favicon.ico') }}" rel="icon" type="image/x-icon">
     <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
 </head>
 
@@ -16,22 +16,22 @@
     <header class="header">
         <div class="container clearfix">
             <div class="header_left clearfix">
-                <a href="/" class="logo-decor">
-                    <img class="logo_icon"
-                         src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
+                <a class="logo-decor" href="/">
+                    <img alt=""
+                         class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}">
                     <p class="logo-text">J.a.r.v.i.s </p>
                 </a>
             </div>
             <div class="header_right">
                 <div class="contacts">
                     <div class="drop">
-                        <p href="" class="contacts__schedule contacts__schedule_mod" onclick="activeClass();">{{
+                        <p class="contacts__schedule contacts__schedule_mod" href="" onclick="activeClass();">{{
                             current_user.username }}</p>
                         <div class="dropdown dropdown_mod" id="dropdown">
                             <div class="drop-block drop-block_out">
                                 <div class="triangle triangle_mod"></div>
-                                <a href="/logout" class="input">
-                                    <button type="submit" value="Выйти" class="header_btn" name="LogOut">Выход</button>
+                                <a class="input" href="/logout">
+                                    <button class="header_btn" name="LogOut" type="submit" value="Выйти">Выход</button>
                                 </a>
                             </div>
                         </div>
@@ -47,14 +47,14 @@
                 <div class="form__title">
                     Создать новый
                 </div>
-                <form action="/workshop" name="NewSceanrio" method="POST">
+                <form action="/workshop" method="POST" name="NewSceanrio">
                     <div class="form_condition">
                         <label class="form__log">
                             <div class="form__field-title">
                                 Название
                             </div>
-                            <input type="text" class="form__input-text" placeholder="Название нового сценария"
-                                   name="NewScenarioName">
+                            <input class="form__input-text" name="NewScenarioName" placeholder="Название нового сценария"
+                                   type="text">
                         </label>
                         <label class="form__log">
                             <div class="form__field-title">
@@ -68,7 +68,7 @@
                         </label>
                         <div class="form__row">
                             <label class="form__textaria-label">
-                                <textarea class="form__texterea" placeholder="Параметры" name="TriggerArgs"></textarea>
+                                <textarea class="form__texterea" name="TriggerArgs" placeholder="Параметры"></textarea>
                             </label>
                         </div>
                         <label class="form__log">
@@ -83,14 +83,14 @@
                         </label>
                         <div class="form__row">
                             <label class="form__textaria-label">
-                                <textarea class="form__texterea" placeholder="Параметры" name="ActionArgs"></textarea>
+                                <textarea class="form__texterea" name="ActionArgs" placeholder="Параметры"></textarea>
                             </label>
                         </div>
                         <div class="form__btns">
                             <div class="form__controls">
                                 <div class="form__controls-btns clearfix">
                                     <div class="form__controls-right">
-                                        <button type="submit" value="Добавить" class="form__submit" name="SendScenario">
+                                        <button class="form__submit" name="SendScenario" type="submit" value="Добавить">
                                             Добавить
                                         </button>
                                     </div>
@@ -107,7 +107,7 @@
                 <div class="form__title">
                     Список сценариев
                 </div>
-                <form action="/workshop" name="Scenarios" method="POST">
+                <form action="/workshop" method="POST" name="Scenarios">
                     <ul class="events_list">
                         {% if user_scripts_list %}
                         {% for user_script in user_scripts_list%}
@@ -129,19 +129,19 @@
                 <div class="form__title">
                     Ваш Telegram
                 </div>
-                <form action="/workshop" name="Telegram" method="POST">
+                <form action="/workshop" method="POST" name="Telegram">
                     <label class="form__log">
                         {% if tg_username %}
-                        <input type="text" class="form__input-text" placeholder={{tg_username}} name="TGUsername">
+                        <input class="form__input-text" name="TGUsername" placeholder={{tg_username}} type="text">
                         {% else %}
-                        <input type="text" class="form__input-text" placeholder="Логин" name="TGUsername">
+                        <input class="form__input-text" name="TGUsername" placeholder="Логин" type="text">
                         {% endif %}
                     </label>
                     <div class="form__btns">
                         <div class="form__controls">
                             <div class="form__controls-btns clearfix">
                                 <div class="form__controls-right">
-                                    <button type="submit" value="Отправить" class="form__submit" name="TelegButton">
+                                    <button class="form__submit" name="TelegButton" type="submit" value="Отправить">
                                         Изменить
                                     </button>
                                 </div>
@@ -154,28 +154,28 @@
                 <div class="form__title">
                     Удалить событие
                 </div>
-                <form action="/workshop" name="" method="POST">
+                <form action="/workshop" method="POST" name="">
                     <label class="form__log">
-                        <div class="form__field-title" > 
+                        <div class="form__field-title">
                             Выберите событие
                         </div>
-                        <select class="form__input-text" name = "">
+                        <select class="form__input-text" name="">
                             {% for trigger in triggers_list %}
-                                <option>{{ trigger.name }}</option>
+                            <option>{{ trigger.name }}</option>
                             {% endfor %}
-                            </select>
+                        </select>
                     </label>
                     <div class="form__btns">
                         <div class="form__controls">
                             <div class="form__controls-btns clearfix">
                                 <div class="form__controls-right">
-                                    <button type="submit" value="Удалить" class="form__submit" name="" >Удалить</button>
+                                    <button class="form__submit" name="" type="submit" value="Удалить">Удалить</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
-              </div>
+            </div>
         </section>
     </section>
 </div>
@@ -188,39 +188,39 @@
                     class="footer-text_name"></b></p>
         </div>
         <div class="footer-q clearfix">
-            <a href="/" class="logo-text">j.a.r.v.i.s</a>
+            <a class="logo-text" href="/">j.a.r.v.i.s</a>
         </div>
         <div class="footer-q clearfix">
             <p class="footer-messeger_text">Наши социальные сети</p>
             <ul class="footer-messeger">
                 <li class="footer-messeger__item ">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/vk.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link ">
-                        <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link " href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/fb.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/google.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/twitter.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/mail.png') }}">
                     </a>
                 </li>
             </ul>

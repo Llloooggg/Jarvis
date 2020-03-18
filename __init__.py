@@ -1,10 +1,12 @@
-from flask import render_template, request, redirect, url_for
-import db_routing
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from db_routing import app, db
-import os
 import hashlib
+import os
 from re import match
+
+from flask import render_template, request, redirect, url_for
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+
+import db_routing
+from db_routing import app, db
 
 login_manager = LoginManager(app)
 

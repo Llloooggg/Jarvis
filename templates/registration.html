@@ -2,14 +2,14 @@
 <html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Jarvis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = './css/main.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='./css/plugins/jquery.fancybox.css') }}">
+    <link href="{{ url_for('static', filename = './css/main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='./img/favicon.ico') }}" rel="icon" type="image/x-icon">
+    <link href="{{ url_for('static', filename='./css/plugins/jquery.fancybox.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
-    
+
 </head>
 
 <body>
@@ -18,30 +18,30 @@
     <header class="header">
         <div class="container clearfix">
             <div class="header_left clearfix">
-                <a href="/" class="logo-decor">
-                    <img class="logo_icon"
-                         src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
+                <a class="logo-decor" href="/">
+                    <img alt=""
+                         class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}">
                     <p class="logo-text">J.a.r.v.i.s </p>
                 </a>
             </div>
             <div class="header_right">
                 <div class="contacts">
                     <div class="drop">
-                        <div href="" class="contacts__schedule" onclick="activeClass();">Войти</div>
+                        <div class="contacts__schedule" href="" onclick="activeClass();">Войти</div>
                         <div class="dropdown" id="dropdown">
                             <form action="" method="POST">
                                 <div class="drop-block">
                                     <div class="triangle"></div>
                                     <label class="form__cell-header ">
-                                        <input type="text" class="form__input-text-mod" placeholder="Логин"
-                                               name="LogUserLogin">
+                                        <input class="form__input-text-mod" name="LogUserLogin" placeholder="Логин"
+                                               type="text">
                                     </label>
                                     <label class="form__cell-header">
-                                        <input type="password" class="form__input-text-mod" placeholder="Пароль"
-                                               name="LogUserPassw">
+                                        <input class="form__input-text-mod" name="LogUserPassw" placeholder="Пароль"
+                                               type="password">
                                     </label>
-                                    <a href="" class="input">
-                                        <input type="button" name="LogButton" class="header_btn" value="Войти">
+                                    <a class="input" href="">
+                                        <input class="header_btn" name="LogButton" type="button" value="Войти">
                                     </a>
                                 </div>
                             </form>
@@ -68,22 +68,22 @@
                                 <div class="form__field-title">
                                     Введите логин
                                 </div>
-                                <input type="text" class="form__input-text" placeholder="Введите логин"
-                                       name="RegUserLogin">
+                                <input class="form__input-text" name="RegUserLogin" placeholder="Введите логин"
+                                       type="text">
                             </label>
                             <label class="form__log">
                                 <div class="form__field-title">
                                     Введите пароль
                                 </div>
-                                <input type="password" class="form__input-text" placeholder="Введите пароль"
-                                       name="RegUserPassw">
+                                <input class="form__input-text" name="RegUserPassw" placeholder="Введите пароль"
+                                       type="password">
                             </label>
                         </div>
                         <div class="form__btns">
                             <div class="form__controls">
                                 <div class="form__controls-btns clearfix">
                                     <div class="form__controls-right">
-                                        <button type="submit" value="Отправить" class="form__submit" name="RegButton">
+                                        <button class="form__submit" name="RegButton" type="submit" value="Отправить">
                                             Регистрация
                                         </button>
                                     </div>
@@ -105,53 +105,54 @@
                     class="footer-text_name"></b></p>
         </div>
         <div class="footer-q clearfix">
-            <a href="/" class="logo-text">j.a.r.v.i.s</a>
+            <a class="logo-text" href="/">j.a.r.v.i.s</a>
         </div>
         <div class="footer-q clearfix">
             <p class="footer-messeger_text">Наши социальные сети</p>
             <ul class="footer-messeger">
                 <li class="footer-messeger__item ">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/vk.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link ">
-                        <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link " href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/fb.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/google.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/twitter.png') }}">
                     </a>
                 </li>
                 <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link">
-                        <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon"
-                             alt="">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/mail.png') }}">
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-    </footer>
-    <!-- <a href="#" data-fancybox data-src="#test-popup">открыть всплывашку</a> -->
-    <div class="popup" id="test-popup">
-        <h1>Пользователь уже существует</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, totam aperiam. Fugit modi exercitationem eos itaque sequi molestiae, voluptates magnam?</p>
-        <a href="#" class="close welcome__btn ">Закрыть</a>
-      </div>
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="{{ url_for('static', filename = './js/plugins/jquery.fancybox.min.js') }}"></script>
+</footer>
+<!-- <a href="#" data-fancybox data-src="#test-popup">открыть всплывашку</a> -->
+<div class="popup" id="test-popup">
+    <h1>Пользователь уже существует</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, totam aperiam. Fugit modi exercitationem eos
+        itaque sequi molestiae, voluptates magnam?</p>
+    <a class="close welcome__btn " href="#">Закрыть</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename = './js/plugins/jquery.fancybox.min.js') }}"></script>
 </body>
 </html>

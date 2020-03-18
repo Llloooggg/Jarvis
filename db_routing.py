@@ -1,6 +1,6 @@
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
-from flask import Flask
 
 app = Flask('Jarvis', static_folder='static', template_folder='templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
