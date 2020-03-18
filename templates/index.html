@@ -2,137 +2,149 @@
 <html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Jarvis</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/main.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <link href="{{ url_for('static', filename = './css/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='./img/favicon.ico') }}" rel="icon" type="image/x-icon">
     <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
 </head>
 
 <body>
-    <div class="wrapper">
-<!-- header-- -->
-        <header class="header">
-            <div class="container clearfix">
-                <div class="header_left clearfix">
-                    <a class="logo-decor">
-                        <img class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
-                        <p class="logo-text">J.a.r.v.i.s </p>
-                    </a>
-                </div>
-                <div class="header_right">
-                    <div class="contacts">
-                        <div class="drop">
-                            {% if current_user.is_authenticated %}
-                            <p href="" class="contacts__schedule contacts__schedule_mod" onclick="activeClass();">{{ current_user.username }}</p>
-                            <div class="dropdown dropdown_mod" id="dropdown">
-                                <div class="drop-block drop-block_out">
-                                    <div class="triangle triangle_mod"></div>
-                                    <a href="/logout" >
-                                        <button type="submit" value="Выйти" class="header_btn" name="LogOut" >Выход</button>
-                                    </a>
-                                </div>
-                            </div>
-                            {% else %}
-                            <div class="contacts__schedule" onclick="activeClass();">Войти</div>
-                            <div class="dropdown" id="dropdown">
-                                <div class="drop-block">
-                                    <form action="/login" method="POST">
-                                        <div class="triangle"></div>
-                                        <label class="form__cell-header ">
-                                            <input type="text" class="form__input-text-mod" placeholder="Логин" name= "LogUserLogin">
-                                        </label>
-                                        <label class="form__cell-header">
-                                            <input type="password" class="form__input-text-mod" placeholder="Пароль" name= "LogUserPassw">
-                                        </label>
-                                        <button type="submit" value="Войти" class="header_btn" name="LogButton" >Вход</button>
-                                    </form>
-                                </div>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
+<div class="wrapper">
+    <!-- header-- -->
+    <header class="header">
+        <div class="container clearfix">
+            <div class="header_left clearfix">
+                <a class="logo-decor">
+                    <img alt=""
+                         class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}">
+                    <p class="logo-text">J.a.r.v.i.s </p>
+                </a>
             </div>
-        </header>
-        
-        <section class="hero"> 
-            <div class="container">
-                <div class="hero_con clearfix">
-                    <div class="rotateblock_orenge">
-                        <div class="ava_logo">
-                            <div class="rotateblock">
-                                <img src="{{ url_for('static', filename='./img/ava.png') }}" alt="" class="ava">
-                            </div>
-                        </div>
-                    </div>
-                        <div class="content_form">
-                            <div class="animate_text">
-                                <h class="h_content">Jarvis</h>
-                            </div>
-                            <div class="content_form-text">
-                                <p class="text_content">Ваш индивидуальный помощник на каждый день</p>
-                            </div>
-                            <div class="input-button">
-                                {% if current_user.is_authenticated %}
-                                <a href="/workshop" class="input">
-                                    <input type="button" href="/login" name="LogButton" class="welcome__btn" value="Приступить" >
+            <div class="header_right">
+                <div class="contacts">
+                    <div class="drop">
+                        {% if current_user.is_authenticated %}
+                        <p class="contacts__schedule contacts__schedule_mod" href="" onclick="activeClass();">{{
+                            current_user.username }}</p>
+                        <div class="dropdown dropdown_mod" id="dropdown">
+                            <div class="drop-block drop-block_out">
+                                <div class="triangle triangle_mod"></div>
+                                <a href="/logout">
+                                    <button class="header_btn" name="LogOut" type="submit" value="Выйти">Выход</button>
                                 </a>
-                                {% else %}
-                                <a href="/registration" class="input">
-                                    <input type="button" href="/registration" name="scriptbutton" class="welcome__btn" value="Регистрация" >
-                                </a>
-                                {% endif %}
+                            </div>
                         </div>
+                        {% else %}
+                        <div class="contacts__schedule" onclick="activeClass();">Войти</div>
+                        <div class="dropdown" id="dropdown">
+                            <div class="drop-block">
+                                <form action="/login" method="POST">
+                                    <div class="triangle"></div>
+                                    <label class="form__cell-header ">
+                                        <input class="form__input-text-mod" name="LogUserLogin" placeholder="Логин"
+                                               type="text">
+                                    </label>
+                                    <label class="form__cell-header">
+                                        <input class="form__input-text-mod" name="LogUserPassw" placeholder="Пароль"
+                                               type="password">
+                                    </label>
+                                    <button class="header_btn" name="LogButton" type="submit" value="Войти">Вход
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
-            </div>
-        </section>
-
-
-    </div>
-
-    <!-- заглушка -->
-    <footer class="footer clearfix">
-        <div class="container">
-            <div class="footer-q clearfix">
-                <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО" <b class="footer-text_name"></b> </p>
-            </div>
-            <div class="footer-q clearfix">
-                <a class="logo-text">j.a.r.v.i.s</a>
-            </div>
-            <div class="footer-q clearfix">
-                <p class="footer-messeger_text">Наши социальные сети</p>
-                <ul class="footer-messeger">
-                    <li class="footer-messeger__item ">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                    <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link ">
-                            <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                </ul>
             </div>
         </div>
-    </footer>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero_con clearfix">
+                <div class="rotateblock_orenge">
+                    <div class="ava_logo">
+                        <div class="rotateblock">
+                            <img alt="" class="ava" src="{{ url_for('static', filename='./img/ava.png') }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="content_form">
+                    <div class="animate_text">
+                        <h class="h_content">Jarvis</h>
+                    </div>
+                    <div class="content_form-text">
+                        <p class="text_content">Ваш индивидуальный помощник на каждый день</p>
+                    </div>
+                    <div class="input-button">
+                        {% if current_user.is_authenticated %}
+                        <a class="input" href="/workshop">
+                            <input class="welcome__btn" href="/login" name="LogButton" type="button" value="Приступить">
+                        </a>
+                        {% else %}
+                        <a class="input" href="/registration">
+                            <input class="welcome__btn" href="/registration" name="scriptbutton" type="button"
+                                   value="Регистрация">
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<!-- заглушка -->
+<footer class="footer clearfix">
+    <div class="container">
+        <div class="footer-q clearfix">
+            <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО" <b
+                    class="footer-text_name"></b></p>
+        </div>
+        <div class="footer-q clearfix">
+            <a class="logo-text">j.a.r.v.i.s</a>
+        </div>
+        <div class="footer-q clearfix">
+            <p class="footer-messeger_text">Наши социальные сети</p>
+            <ul class="footer-messeger">
+                <li class="footer-messeger__item ">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/vk.png') }}">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a class="footer-messeger__link " href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/fb.png') }}">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/google.png') }}">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/twitter.png') }}">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a class="footer-messeger__link" href="">
+                        <img alt="" class="footer-messeger__icon"
+                             src="{{ url_for('static', filename='./img/mail.png') }}">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

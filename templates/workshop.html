@@ -11,182 +11,195 @@
 </head>
 
 <body>
-    <div class="wrapper">
-<!-- header-- -->
-        <header class="header">
-            <div class="container clearfix">
-                <div class="header_left clearfix">
-                    <a href="/" class="logo-decor">
-                        <img class="logo_icon" src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
-                        <p class="logo-text">J.a.r.v.i.s </p>
-                    </a>
-                </div>
-                <div class="header_right">
-                    <div class="contacts">
-                        <div class="drop">                   
-                            <p href="" class="contacts__schedule contacts__schedule_mod" onclick="activeClass();">{{ current_user.username }}</p>
-                            <div class="dropdown dropdown_mod" id="dropdown">
-                                <div class="drop-block drop-block_out">
-                                    <div class="triangle triangle_mod"></div>
-                                    <a href="/logout" class="input">
-                                    <button type="submit" value="Выйти" class="header_btn" name="LogOut" >Выход</button>
-                                    </a>
-                                </div>
+<div class="wrapper">
+    <!-- header-- -->
+    <header class="header">
+        <div class="container clearfix">
+            <div class="header_left clearfix">
+                <a href="/" class="logo-decor">
+                    <img class="logo_icon"
+                         src="{{ url_for('static', filename='./img/815a836e51c6f20226cb07df7f32895c.png') }}" alt="">
+                    <p class="logo-text">J.a.r.v.i.s </p>
+                </a>
+            </div>
+            <div class="header_right">
+                <div class="contacts">
+                    <div class="drop">
+                        <p href="" class="contacts__schedule contacts__schedule_mod" onclick="activeClass();">{{
+                            current_user.username }}</p>
+                        <div class="dropdown dropdown_mod" id="dropdown">
+                            <div class="drop-block drop-block_out">
+                                <div class="triangle triangle_mod"></div>
+                                <a href="/logout" class="input">
+                                    <button type="submit" value="Выйти" class="header_btn" name="LogOut">Выход</button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <section class="container form_content">
-            <!-- условия -->
-            <section class="condition">
-                <div class="form">
-                    <div class="form__title">
-                        Создать новый
-                    </div>
-                    <form action="/workshop" name="NewSceanrio" method="POST">
-                        <div class="form_condition">
-                            <label class="form__log">
-                                <div class="form__field-title" > 
-                                    Название
-                                </div>
-                                <input type="text" class="form__input-text" placeholder="Название нового сценария" name = "NewScenarioName">
-                            </label>  
-                            <label class="form__log">
-                                <div class="form__field-title" > 
-                                    Условие:
-                                </div>
-                                <select class="form__input-text" name = "TriggerName">
-                                    {% for trigger in triggers_list %}
-                                        <option  value="{{ trigger.id }}" >{{ trigger.name }}</option>
-                                    {% endfor %}
-                                    </select>
-                            </label>
-                            <div class="form__row">
-                                <label class="form__textaria-label">
-                                    <textarea  class="form__texterea" placeholder="Параметры" name = "TriggerArgs"></textarea>
-                                </label>
-                            </div>
-                            <label class="form__log">
-                                <div class="form__field-title" > 
-                                    Действие:
-                                </div>
-                                <select class="form__input-text" name = "ActionName">
-                                    {% for action in actions_list %}
-                                        <option value="{{ action.id }}" >{{ action.name }}</option>
-                                    {% endfor %}
-                                    </select>
-                            </label>
-                            <div class="form__row">
-                                <label class="form__textaria-label">
-                                    <textarea  class="form__texterea" placeholder="Параметры" name = "ActionArgs"></textarea>
-                                </label>
-                            </div>
-                            <div class="form__btns">
-                                <div class="form__controls">
-                                    <div class="form__controls-btns clearfix">
-                                        <div class="form__controls-right">
-                                            <button type="submit" value="Добавить" class="form__submit" name="SendScenario" >Добавить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+        </div>
+    </header>
+    <section class="container form_content">
+        <!-- условия -->
+        <section class="condition">
+            <div class="form">
+                <div class="form__title">
+                    Создать новый
                 </div>
-            </section>
-            <!-- лист событий -->
-            <section class="events">
-                <section class="form">
-                    <div class="form__title">
-                        Список сценариев
-                    </div>                    
-                    <form action="/workshop" name="Scenarios" method="POST">
-                        <ul class="events_list">
-                            {% if user_scripts_list %}
-                                {% for user_script in user_scripts_list%}
-                                    <li class="events_item">
-                                        <p>{{ user_script.scenario_name }}</p>
-                                        <div class="cl-btn-7" ></div>
-                                    </li>
-                                {% endfor %}
-                            {% else %}
-                                <p>У вас пока отсутствуют сценарии</p>
-                            {% endif %}
-                        </ul>
-                    </form>
-                </section>
-            </section>         
-            <!-- лист телеги -->
-            <section class="telegram">
-                <div class="form">
-                    <div class="form__title">
-                        Ваш Telegram
-                    </div>
-                    <form action="/workshop" name="Telegram" method="POST">
+                <form action="/workshop" name="NewSceanrio" method="POST">
+                    <div class="form_condition">
                         <label class="form__log">
-                            {% if tg_username %}
-                                <input type="text" class="form__input-text" placeholder={{tg_username}} name = "TGUsername">
-                            {% else %}
-                                <input type="text" class="form__input-text" placeholder="Логин" name = "TGUsername">
-                            {% endif %}
-                        </label> 
+                            <div class="form__field-title">
+                                Название
+                            </div>
+                            <input type="text" class="form__input-text" placeholder="Название нового сценария"
+                                   name="NewScenarioName">
+                        </label>
+                        <label class="form__log">
+                            <div class="form__field-title">
+                                Условие:
+                            </div>
+                            <select class="form__input-text" name="TriggerName">
+                                {% for trigger in triggers_list %}
+                                <option value="{{ trigger.id }}">{{ trigger.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <div class="form__row">
+                            <label class="form__textaria-label">
+                                <textarea class="form__texterea" placeholder="Параметры" name="TriggerArgs"></textarea>
+                            </label>
+                        </div>
+                        <label class="form__log">
+                            <div class="form__field-title">
+                                Действие:
+                            </div>
+                            <select class="form__input-text" name="ActionName">
+                                {% for action in actions_list %}
+                                <option value="{{ action.id }}">{{ action.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <div class="form__row">
+                            <label class="form__textaria-label">
+                                <textarea class="form__texterea" placeholder="Параметры" name="ActionArgs"></textarea>
+                            </label>
+                        </div>
                         <div class="form__btns">
                             <div class="form__controls">
                                 <div class="form__controls-btns clearfix">
                                     <div class="form__controls-right">
-                                        <button type="submit" value="Отправить" class="form__submit" name="TelegButton" >Изменить</button>
+                                        <button type="submit" value="Добавить" class="form__submit" name="SendScenario">
+                                            Добавить
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- лист событий -->
+        <section class="events">
+            <section class="form">
+                <div class="form__title">
+                    Список сценариев
                 </div>
+                <form action="/workshop" name="Scenarios" method="POST">
+                    <ul class="events_list">
+                        {% if user_scripts_list %}
+                        {% for user_script in user_scripts_list%}
+                        <li class="events_item">
+                            <p>{{ user_script.scenario_name }}</p>
+                            <div class="cl-btn-7"></div>
+                        </li>
+                        {% endfor %}
+                        {% else %}
+                        <p>У вас пока отсутствуют сценарии</p>
+                        {% endif %}
+                    </ul>
+                </form>
             </section>
-        </section>     
-    </div>
+        </section>
+        <!-- лист телеги -->
+        <section class="telegram">
+            <div class="form">
+                <div class="form__title">
+                    Ваш Telegram
+                </div>
+                <form action="/workshop" name="Telegram" method="POST">
+                    <label class="form__log">
+                        {% if tg_username %}
+                        <input type="text" class="form__input-text" placeholder={{tg_username}} name="TGUsername">
+                        {% else %}
+                        <input type="text" class="form__input-text" placeholder="Логин" name="TGUsername">
+                        {% endif %}
+                    </label>
+                    <div class="form__btns">
+                        <div class="form__controls">
+                            <div class="form__controls-btns clearfix">
+                                <div class="form__controls-right">
+                                    <button type="submit" value="Отправить" class="form__submit" name="TelegButton">
+                                        Изменить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+</div>
 
-    <!-- заглушка -->
-    <footer class="footer clearfix">
-        <div class="container">
-            <div class="footer-q clearfix">
-                <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО"  <b class="footer-text_name"></b> </p>
-            </div>
-            <div class="footer-q clearfix">
-                <a href="/" class="logo-text">j.a.r.v.i.s</a>
-            </div>
-            <div class="footer-q clearfix">
-                <p class="footer-messeger_text">Наши социальные сети</p>
-                <ul class="footer-messeger">
-                    <li class="footer-messeger__item ">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                    <a href="" class="footer-messeger__link ">
-                            <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon" alt="">
-                        </a>
-                    </li>
-                    <li class="footer-messeger__item">
-                        <a href="" class="footer-messeger__link">
-                            <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon" alt="">
-                        </a>   
-                    </li>
-                </ul>
-            </div>
+<!-- заглушка -->
+<footer class="footer clearfix">
+    <div class="container">
+        <div class="footer-q clearfix">
+            <p class="footer-full-text">Сделано с любовью и старанием на курсе ВГУ "Тестирование ПО" <b
+                    class="footer-text_name"></b></p>
         </div>
-    </footer>
+        <div class="footer-q clearfix">
+            <a href="/" class="logo-text">j.a.r.v.i.s</a>
+        </div>
+        <div class="footer-q clearfix">
+            <p class="footer-messeger_text">Наши социальные сети</p>
+            <ul class="footer-messeger">
+                <li class="footer-messeger__item ">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/vk.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link ">
+                        <img src="{{ url_for('static', filename='./img/fb.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/google.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/twitter.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+                <li class="footer-messeger__item">
+                    <a href="" class="footer-messeger__link">
+                        <img src="{{ url_for('static', filename='./img/mail.png') }}" class="footer-messeger__icon"
+                             alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
