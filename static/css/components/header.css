@@ -238,13 +238,15 @@
     padding: 28px 0;
     margin: 0;
 }
-.drop:hover .contacts__schedule_mod {
-    width: 116px;
+/* .drop:hover .contacts__schedule_mod {
+    width: 116px;   
 }
 .drop:hover .dropdown_mod {
     left: -25px;
+} */
+.dropdown_mod {
+    left: -117px;
 }
-
 .triangle_mod {
     left: 73%;
     bottom: 81%;
