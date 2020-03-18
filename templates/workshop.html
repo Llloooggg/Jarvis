@@ -43,7 +43,7 @@
             <section class="condition">
                 <div class="form">
                     <div class="form__title">
-                        Условия
+                        Создать новый
                     </div>
                     <form action="/workshop" name="NewSceanrio" method="POST">
                         <div class="form_condition">
@@ -59,13 +59,13 @@
                                 </div>
                                 <select class="form__input-text" name = "TriggerName">
                                     {% for trigger in triggers_list %}
-                                        <option>{{ trigger.name }}</option>
+                                        <option  value="{{ trigger.id }}" >{{ trigger.name }}</option>
                                     {% endfor %}
                                     </select>
                             </label>
                             <div class="form__row">
                                 <label class="form__textaria-label">
-                                    <textarea  class="form__texterea" placeholder="Дополнения" name = "TriggerArgs"></textarea>
+                                    <textarea  class="form__texterea" placeholder="Параметры" name = "TriggerArgs"></textarea>
                                 </label>
                             </div>
                             <label class="form__log">
@@ -74,13 +74,13 @@
                                 </div>
                                 <select class="form__input-text" name = "ActionName">
                                     {% for action in actions_list %}
-                                        <option>{{ action.name }}</option>
+                                        <option value="{{ action.id }}" >{{ action.name }}</option>
                                     {% endfor %}
                                     </select>
                             </label>
                             <div class="form__row">
                                 <label class="form__textaria-label">
-                                    <textarea  class="form__texterea" placeholder="Дополнения" name = "ActionArgs"></textarea>
+                                    <textarea  class="form__texterea" placeholder="Параметры" name = "ActionArgs"></textarea>
                                 </label>
                             </div>
                             <div class="form__btns">
@@ -100,14 +100,14 @@
             <section class="events">
                 <section class="form">
                     <div class="form__title">
-                        Лист событий
+                        Список сценариев
                     </div>                    
                     <form action="/workshop" name="Scenarios" method="POST">
                         <ul class="events_list">
                             {% if user_scripts_list %}
                                 {% for user_script in user_scripts_list%}
                                     <li class="events_item">
-                                        <p>{{ user_script.name }}</p>
+                                        <p>{{ user_script.scenario_name }}</p>
                                         <div class="cl-btn-7" ></div>
                                     </li>
                                 {% endfor %}
