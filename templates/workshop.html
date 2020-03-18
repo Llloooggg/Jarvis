@@ -7,6 +7,7 @@
     <title>Jarvis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = './css/main.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
 </head>
 
 <body>
@@ -23,8 +24,8 @@
                 <div class="header_right">
                     <div class="contacts">
                         <div class="drop">                   
-                            <p href="" class="contacts__schedule contacts__schedule_mod">{{ current_user.username }}</p>
-                            <div class="dropdown dropdown_mod">
+                            <p href="" class="contacts__schedule contacts__schedule_mod" onclick="activeClass();">{{ current_user.username }}</p>
+                            <div class="dropdown dropdown_mod" id="dropdown">
                                 <div class="drop-block drop-block_out">
                                     <div class="triangle triangle_mod"></div>
                                     <a href="/logout" class="input">

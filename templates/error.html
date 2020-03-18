@@ -7,6 +7,7 @@
     <title>Jarvis</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/main.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
 </head>
 
 <body>
@@ -23,9 +24,9 @@
                 <div class="header_right">
                     <div class="contacts">
                         <div class="drop">                   
-                            <a href="" class="contacts__schedule">Нужна помощь?</a>
+                            <a href="" class="contacts__schedule"  onclick="activeClass();">Нужна помощь?</a>
 
-                             <div class="dropdown dropdown_mod">
+                             <div class="dropdown dropdown_mod" id="dropdown">
                                 <div class="drop-block drop-block_mod">
                                     <div class="triangle triangle_mod"></div>
                                     <p>Обратитесь в службу поддержки по адресу:<b>jarvis@mail.ru</b> </p>

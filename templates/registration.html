@@ -7,6 +7,7 @@
     <title>Jarvis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = './css/main.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
 </head>
 
 <body>
@@ -23,8 +24,8 @@
                 <div class="header_right">
                     <div class="contacts">
                         <div class="drop">                   
-                            <div href="" class="contacts__schedule">Войти</div>
-                            <div class="dropdown">
+                            <div href="" class="contacts__schedule" onclick="activeClass();">Войти</div>
+                            <div class="dropdown" id="dropdown">
                                 <form action="" method="POST">
                                     <div class="drop-block">
                                         <div class="triangle"></div>

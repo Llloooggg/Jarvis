@@ -111,20 +111,25 @@
 .drop {
     position: relative;
 }
-.drop:hover .dropdown {
+/* .drop:hover .dropdown {
     left: -167px;
     background: #afadab;
     padding-top: 0px;
     border-radius: 9px;
 
-}
+} */
 .drop:hover .contacts__schedule {
     color: #b9b9b9;
+    cursor: pointer;
 }
 
 .dropdown {
+    display: none; 
     position: absolute;
-    left: -9999px;  
+    left: -167px;
+    background: #afadab;
+    padding-top: 0px;
+    border-radius: 9px;
 }
 
 .drop-block {
@@ -232,6 +237,9 @@
 .contacts__schedule_mod {
     padding: 28px 0;
     margin: 0;
+}
+.drop:hover .contacts__schedule_mod {
+    width: 116px;
 }
 .drop:hover .dropdown_mod {
     left: -25px;

@@ -7,6 +7,7 @@
     <title>Jarvis</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/main.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
 </head>
 
 <body>
@@ -24,8 +25,8 @@
                     <div class="contacts">
                         <div class="drop">
                             {% if current_user.is_authenticated %}
-                            <p href="" class="contacts__schedule contacts__schedule_mod">{{ current_user.username }}</p>
-                            <div class="dropdown dropdown_mod">
+                            <p href="" class="contacts__schedule contacts__schedule_mod" onclick="activeClass();">{{ current_user.username }}</p>
+                            <div class="dropdown dropdown_mod" id="dropdown">
                                 <div class="drop-block drop-block_out">
                                     <div class="triangle triangle_mod"></div>
                                     <a href="/logout" >
@@ -34,8 +35,8 @@
                                 </div>
                             </div>
                             {% else %}
-                            <div class="contacts__schedule">Войти</div>
-                            <div class="dropdown">
+                            <div class="contacts__schedule" onclick="activeClass();">Войти</div>
+                            <div class="dropdown" id="dropdown">
                                 <div class="drop-block">
                                     <form action="/login" method="POST">
                                         <div class="triangle"></div>
