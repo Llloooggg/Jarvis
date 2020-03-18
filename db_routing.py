@@ -41,7 +41,7 @@ class Action(db.Model):
     __tablename__ = 'Actions'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    def_nme = db.Column(db.String(200))
+    def_name = db.Column(db.String(200))
 
 
 class Scenario(db.Model):
