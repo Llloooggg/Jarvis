@@ -23,6 +23,8 @@ def index():
 
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
+    if current_user.is_authenticated:
+        return redirect(url_for('universal_error'))
     if request.method == 'POST':
         userName = request.form['RegUserLogin']
         userPassw = request.form['RegUserPassw']
