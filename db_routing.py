@@ -56,7 +56,7 @@ class Scenario(db.Model):
 
 
 def add_user(user_name, passw_hash):
-    if not get_user(user_name):
+    if not get_user(username=user_name):
         new_user = User(username=user_name, password=passw_hash)
         db.session.add(new_user)
         db.session.commit()

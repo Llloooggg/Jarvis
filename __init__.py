@@ -69,12 +69,12 @@ def workshop():
                                     actionArgs)
             return redirect(url_for('workshop'))
 
-        # if 'NewScenarioName' in request.form:
-
         if 'TGUsername' in request.form:
             new_tg_username = request.form['TGUsername']
             db_routing.tg_username_update(current_user.get_id(), new_tg_username)
             return redirect(url_for('workshop'))
+
+        # if 'NewScenarioName' in request.form:
 
     triggers_list = db_routing.get_trigers()
     actions_list = db_routing.get_actions()
