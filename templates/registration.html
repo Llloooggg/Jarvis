@@ -27,10 +27,22 @@
             <div class="header_right">
                 <div class="contacts">
                     <div class="drop">
-                        <div class="contacts__schedule" href="" onclick="activeClass();">Войти</div>
+                        {% if current_user.is_authenticated %}
+                        <p class="contacts__schedule contacts__schedule_mod" href="" onclick="activeClass();">{{
+                            current_user.username }}</p>
+                        <div class="dropdown dropdown_mod" id="dropdown">
+                            <div class="drop-block drop-block_out">
+                                <div class="triangle triangle_mod"></div>
+                                <a href="/logout">
+                                    <button class="header_btn" name="LogOut" type="submit" value="Выйти">Выход</button>
+                                </a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="contacts__schedule" onclick="activeClass();">Войти</div>
                         <div class="dropdown" id="dropdown">
-                            <form action="" method="POST">
-                                <div class="drop-block">
+                            <div class="drop-block">
+                                <form action="/login" method="POST">
                                     <div class="triangle"></div>
                                     <label class="form__cell-header ">
                                         <input class="form__input-text-mod" name="LogUserLogin" placeholder="Логин"
@@ -40,12 +52,12 @@
                                         <input class="form__input-text-mod" name="LogUserPassw" placeholder="Пароль"
                                                type="password">
                                     </label>
-                                    <a class="input" href="">
-                                        <input class="header_btn" name="LogButton" type="button" value="Войти">
-                                    </a>
-                                </div>
-                            </form>
+                                    <button class="header_btn" name="LogButton" type="submit" value="Войти">Вход
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
