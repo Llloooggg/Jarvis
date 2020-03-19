@@ -61,9 +61,9 @@ def workshop():
     if request.method == 'POST':
         if 'NewScenarioName' in request.form:
             newScenarioName = request.form['NewScenarioName']
-            triggerName = request.form['TriggerName']
+            triggerName = request.form['TriggerID']
             triggerArgs = request.form['TriggerArgs']
-            actionName = request.form['ActionName']
+            actionName = request.form['ActionID']
             actionArgs = request.form['ActionArgs']
             db_routing.add_scenario(current_user.get_id(), newScenarioName, triggerName, triggerArgs, actionName,
                                     actionArgs)
@@ -74,7 +74,10 @@ def workshop():
             db_routing.tg_username_update(current_user.get_id(), new_tg_username)
             return redirect(url_for('workshop'))
 
-        # if 'NewScenarioName' in request.form:
+        if 'ScenarioID' in request.form:
+            scnarioID = request.form['ScenarioID']
+            db_routing.delete_scenario(scnarioID)
+            return redirect(url_for('workshop'))
 
     triggers_list = db_routing.get_trigers()
     actions_list = db_routing.get_actions()
@@ -88,9 +91,9 @@ def workshop():
                            user_scripts_list=user_scripts_list, tg_username=tg_username)
 
 
-# @app.errorhandler(Exception)
-# def universal_error(error):
-#     return render_template('error.html'), 404
+@app.errorhandler(Exception)
+def universal_error(error):
+    return render_template('error.html'), 404
 
 
 def string_check(string):

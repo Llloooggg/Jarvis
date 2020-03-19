@@ -60,7 +60,7 @@
                             <div class="form__field-title">
                                 Условие:
                             </div>
-                            <select class="form__input-text" name="TriggerName">
+                            <select class="form__input-text" name="TriggerID">
                                 {% for trigger in triggers_list %}
                                 <option value="{{ trigger.id }}">{{ trigger.name }}</option>
                                 {% endfor %}
@@ -75,7 +75,7 @@
                             <div class="form__field-title">
                                 Действие:
                             </div>
-                            <select class="form__input-text" name="ActionName">
+                            <select class="form__input-text" name="ActionID">
                                 {% for action in actions_list %}
                                 <option value="{{ action.id }}">{{ action.name }}</option>
                                 {% endfor %}
@@ -110,10 +110,10 @@
                 <form action="/workshop" method="POST" name="Scenarios">
                     <ul class="events_list">
                         {% if user_scripts_list %}
+                        {% set count = 1 %}
                         {% for user_script in user_scripts_list%}
                         <li class="events_item">
-                            <p>{{ user_script.scenario_name }}</p>
-                            <div class="cl-btn-7"></div>
+                            <p>• {{ user_script.scenario_name }}</p>
                         </li>
                         {% endfor %}
                         {% else %}
@@ -132,9 +132,9 @@
                 <form action="/workshop" method="POST" name="Telegram">
                     <label class="form__log">
                         {% if tg_username %}
-                        <input class="form__input-text" name="TGUsername" placeholder={{tg_username}} type="text">
+                        <input class="form__input-text" name="TGUsername" placeholder=@{{tg_username}} type="text">
                         {% else %}
-                        <input class="form__input-text" name="TGUsername" placeholder="Логин" type="text">
+                        <input class="form__input-text" name="TGUsername" placeholder="@Логин" type="text">
                         {% endif %}
                     </label>
                     <div class="form__btns">
@@ -152,16 +152,16 @@
             </div>
             <div class="form">
                 <div class="form__title">
-                    Удалить событие
+                    Удалить сценарий
                 </div>
                 <form action="/workshop" method="POST" name="">
                     <label class="form__log">
                         <div class="form__field-title">
                             Выберите событие
                         </div>
-                        <select class="form__input-text" name="">
-                            {% for trigger in triggers_list %}
-                            <option>{{ trigger.name }}</option>
+                        <select class="form__input-text" name="ScenarioID">
+                            {% for user_script in user_scripts_list %}
+                            <option value="{{ user_script.id }}">{{ user_script.scenario_name }}</option>
                             {% endfor %}
                         </select>
                     </label>
