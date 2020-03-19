@@ -27,35 +27,36 @@
                 <div class="contacts">
                     <div class="drop">
                         {% if current_user.is_authenticated %}
-                        <p class="contacts__schedule contacts__schedule_mod" href="" onclick="activeClass();">{{
-                            current_user.username }}</p>
-                        <div class="dropdown dropdown_mod" id="dropdown">
-                            <div class="drop-block drop-block_out">
-                                <div class="triangle triangle_mod"></div>
-                                <a href="/logout">
-                                    <button class="header_btn" name="LogOut" type="submit" value="Выйти">Выход</button>
-                                </a>
+                            <p class="contacts__schedule contacts__schedule_mod" href=""
+                               onclick="activeClass();">{{ current_user.username }}</p>
+                            <div class="dropdown dropdown_mod" id="dropdown">
+                                <div class="drop-block drop-block_out">
+                                    <div class="triangle triangle_mod"></div>
+                                    <a href="/logout">
+                                        <button class="header_btn" name="LogOut" type="submit" value="Выйти">Выход
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         {% else %}
-                        <div class="contacts__schedule" onclick="activeClass();">Войти</div>
-                        <div class="dropdown" id="dropdown">
-                            <div class="drop-block">
-                                <form action="/login" method="POST">
-                                    <div class="triangle"></div>
-                                    <label class="form__cell-header ">
-                                        <input class="form__input-text-mod" name="LogUserLogin" placeholder="Логин"
-                                               type="text">
-                                    </label>
-                                    <label class="form__cell-header">
-                                        <input class="form__input-text-mod" name="LogUserPassw" placeholder="Пароль"
-                                               type="password">
-                                    </label>
-                                    <button class="header_btn" name="LogButton" type="submit" value="Войти">Вход
-                                    </button>
-                                </form>
+                            <div class="contacts__schedule" onclick="activeClass();">Войти</div>
+                            <div class="dropdown" id="dropdown">
+                                <div class="drop-block">
+                                    <form action="/login" method="POST">
+                                        <div class="triangle"></div>
+                                        <label class="form__cell-header ">
+                                            <input class="form__input-text-mod" name="LogUserLogin" placeholder="Логин"
+                                                   type="text">
+                                        </label>
+                                        <label class="form__cell-header">
+                                            <input class="form__input-text-mod" name="LogUserPassw" placeholder="Пароль"
+                                                   type="password">
+                                        </label>
+                                        <button class="header_btn" name="LogButton" type="submit" value="Войти">Вход
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
                         {% endif %}
                     </div>
                 </div>
@@ -82,14 +83,15 @@
                     </div>
                     <div class="input-button">
                         {% if current_user.is_authenticated %}
-                        <a class="input" href="/workshop">
-                            <input class="welcome__btn" href="/login" name="LogButton" type="button" value="Приступить">
-                        </a>
+                            <a class="input" href="/workshop">
+                                <input class="welcome__btn" href="/login" name="LogButton" type="button"
+                                       value="Приступить">
+                            </a>
                         {% else %}
-                        <a class="input" href="/registration">
-                            <input class="welcome__btn" href="/registration" name="scriptbutton" type="button"
-                                   value="Регистрация">
-                        </a>
+                            <a class="input" href="/registration">
+                                <input class="welcome__btn" href="/registration" name="scriptbutton" type="button"
+                                       value="Регистрация">
+                            </a>
                         {% endif %}
                     </div>
                 </div>

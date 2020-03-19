@@ -26,8 +26,8 @@
             <div class="header_right">
                 <div class="contacts">
                     <div class="drop">
-                        <p class="contacts__schedule contacts__schedule_mod" href="" onclick="activeClass();">{{
-                            current_user.username }}</p>
+                        <p class="contacts__schedule contacts__schedule_mod" href=""
+                           onclick="activeClass();">{{ current_user.username }}</p>
                         <div class="dropdown dropdown_mod" id="dropdown">
                             <div class="drop-block drop-block_out">
                                 <div class="triangle triangle_mod"></div>
@@ -64,7 +64,7 @@
                             </div>
                             <select class="form__input-text" name="TriggerID">
                                 {% for trigger in triggers_list %}
-                                <option value="{{ trigger.id }}">{{ trigger.name }}</option>
+                                    <option value="{{ trigger.id }}">{{ trigger.name }}</option>
                                 {% endfor %}
                             </select>
                         </label>
@@ -79,7 +79,7 @@
                             </div>
                             <select class="form__input-text" name="ActionID">
                                 {% for action in actions_list %}
-                                <option value="{{ action.id }}">{{ action.name }}</option>
+                                    <option value="{{ action.id }}">{{ action.name }}</option>
                                 {% endfor %}
                             </select>
                         </label>
@@ -112,14 +112,14 @@
                 <form action="/workshop" method="POST" name="Scenarios">
                     <ul class="events_list">
                         {% if user_scripts_list %}
-                        {% set count = 1 %}
-                        {% for user_script in user_scripts_list%}
-                        <li class="events_item">
-                            <p>• {{ user_script.scenario_name }}</p>
-                        </li>
-                        {% endfor %}
+                            {% set count = 1 %}
+                            {% for user_script in user_scripts_list %}
+                                <li class="events_item">
+                                    <p>• {{ user_script.scenario_name }}</p>
+                                </li>
+                            {% endfor %}
                         {% else %}
-                        <p>У вас пока отсутствуют сценарии</p>
+                            <p>У вас пока отсутствуют сценарии</p>
                         {% endif %}
                     </ul>
                 </form>
@@ -134,9 +134,10 @@
                 <form action="/workshop" method="POST" name="Telegram">
                     <label class="form__log">
                         {% if tg_username %}
-                        <input class="form__input-text" name="TGUsername" placeholder=@{{tg_username}} type="text">
+                            <input class="form__input-text" name="TGUsername" placeholder=@{{ tg_username }}
+                                   type="text">
                         {% else %}
-                        <input class="form__input-text" name="TGUsername" placeholder="@Логин" type="text">
+                            <input class="form__input-text" name="TGUsername" placeholder="@Логин" type="text">
                         {% endif %}
                     </label>
                     <div class="form__btns">
@@ -163,7 +164,7 @@
                         </div>
                         <select class="form__input-text" name="ScenarioID">
                             {% for user_script in user_scripts_list %}
-                            <option value="{{ user_script.id }}">{{ user_script.scenario_name }}</option>
+                                <option value="{{ user_script.id }}">{{ user_script.scenario_name }}</option>
                             {% endfor %}
                         </select>
                     </label>
