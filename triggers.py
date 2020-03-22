@@ -6,28 +6,13 @@ import imaplib
 import threading
 import time
 
-# То, что нужно будет передавать функциям
-
-# Инициализация будильника
-userName = 'Denis'
-year_Alarm_Clock = 2020
-month_Alarm_Clock = 3
-day_Alarm_Clock = 19
-hour_Alarm_Clock = 12
-min_Alarm_Clock = 49
-sec_Alarm_Clock = 0
-# Инициализация парсера почты
-gmail_user = ''  # Login
-gmail_pass = ''  # Password
-
-
-# Сами функции
-
 # Будильник
-def alarm_clock(year_Alarm_Clock, month_Alarm_Clock, day_Alarm_Clock, hour_Alarm_Clock, min_Alarm_Clock,
-                sec_Alarm_Clock):
-    dt = datetime.datetime(year_Alarm_Clock, month_Alarm_Clock, day_Alarm_Clock, hour_Alarm_Clock, min_Alarm_Clock,
-                           sec_Alarm_Clock)
+# Формат строки (год месяц день час минута секунда)
+#Config_time='2020 3 22 15 20 0'
+def alarm_clock(Config_time):
+    Config_list=Config_time.split()
+    dt = datetime.datetime(int(Config_list[0]), int(Config_list[1]), int(Config_list[2]), int(Config_list[3]), int(Config_list[4]),
+                           int(Config_list[5]))
     diff = (dt - datetime.datetime.now()).total_seconds()
     try:
         time.sleep(diff)
@@ -39,10 +24,13 @@ def alarm_clock(year_Alarm_Clock, month_Alarm_Clock, day_Alarm_Clock, hour_Alarm
 
 # проверка почты на новое письмо gmail
 # Нужно включить https://myaccount.google.com/lesssecureapps и https://mail.google.com/mail/u/2/#settings/fwdandpop
+# Формат строки (логин пароль )
+#check_mail_config='login@gmail.com Password123'
 
-def check_email(gmail_user, gmail_pass):
+def check_email(check_mail_config):
+    mail_config_list=check_mail_config.split()
     mail = imaplib.IMAP4_SSL('imap.gmail.com', 993)
-    mail.login(gmail_user, gmail_pass)
+    mail.login(mail_config_list[0], mail_config_list[1])
     mail.list()
     count_Email_Start = (mail.select("inbox")[1][0]).decode('utf-8')
     while True:
@@ -64,11 +52,6 @@ def check_email(gmail_user, gmail_pass):
             count_Email_Start = count_Email_Current
         time.sleep(15)  # частота проверки нового письма
 
-
-# Чтобы запустить будильник 1, Парсер 2
-Mode = 2
-
-
 def test_trigger(var):
     time.sleep(int(var))
 
@@ -76,21 +59,3 @@ def test_trigger(var):
 def test_action(var):
     print("Я пишу", var)
 
-
-# Для создания потока будильника передаются:
-# Id юзера который поставил будильник, и значения времени которые он поставил. Поток создаётся с именем(id) юзера
-if __name__ == '__main__':
-    if Mode == 1:
-        Clock_Thread = threading.Thread(
-            target=alarm_clock, name=userName, args=(year_Alarm_Clock,
-                                                     month_Alarm_Clock,
-                                                     day_Alarm_Clock,
-                                                     hour_Alarm_Clock,
-                                                     min_Alarm_Clock,
-                                                     sec_Alarm_Clock))
-        Clock_Thread.start()
-    if Mode == 2:
-        check_email(gmail_user, gmail_pass)
-
-# сценарии должны хранить логины и пароль
-# запилить бота, возврат темы и отправителя в словаре.
