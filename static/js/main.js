@@ -9,3 +9,14 @@ function activeClass() {
         a = 0;
     }
 }
+
+
+
+$(function() {
+    setTimeout(function() {
+         $('#1').show(400);
+    }, 500);
+    setTimeout(function() {
+        $('#1').hide(400);
+    }, 6000);
+  });
