@@ -94,7 +94,9 @@
     padding-top: 0px;
     border-radius: 9px;
 }
-
+.red_text{
+    display: none;
+}
 .drop-block {
     z-index: 20;
     border-radius: 10px;
@@ -103,6 +105,7 @@
     position: relative;
     padding: 18px 0;
     background: rgba(86, 84, 84, 0.84);
+
 }
 .drop-block_out {
     padding: 19px 25px;
@@ -122,12 +125,12 @@
 }
 .drop-block p {
     font-family: 'OpenSans';
-    font-weight: 300;
-    font-size: 14px;
-    color : #ffffff;
     margin: 0;
     text-align: center;
     margin-bottom: 8px;
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
 }
 .drop-block b {
     font-family: 'OpenSans';
@@ -217,3 +220,4 @@
 .header_btn_mod {
     margin: 0 40px;
 }
+

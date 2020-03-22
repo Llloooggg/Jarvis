@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Jarvis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
     <link href="{{ url_for('static', filename = './css/main.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url_for('static', filename='./img/favicon.ico') }}" rel="icon" type="image/x-icon">
     <script src="{{ url_for('static', filename = './js/main.js') }}"></script>
@@ -44,6 +45,7 @@
                                 <div class="drop-block">
                                     <form action="/login" method="POST">
                                         <div class="triangle"></div>
+                                        <!-- <p class="red_text" id="1">Неверный логин или пароль</p> -->
                                         <label class="form__cell-header ">
                                             <input class="form__input-text-mod" name="LogUserLogin" placeholder="Логин"
                                                    type="text">
