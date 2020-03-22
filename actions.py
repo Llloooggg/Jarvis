@@ -1,6 +1,9 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
+from flask_login import current_user
+import telegram
+
 
 def send_mail():
     mail_sender = '' #отправитель
@@ -21,3 +24,8 @@ def send_mail():
     server.login(username, password)
     server.sendmail(mail_sender, mail_receiver, msg.as_string())
     server.quit()
+
+
+def send_message_tg(text, user_id=current_user.get_tg_id()):
+    telegram.send_message(user_id, text)
+

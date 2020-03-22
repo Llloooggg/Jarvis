@@ -1,22 +1,24 @@
-# Парсер почты
 import datetime
 import email
 import imaplib
-# будильник
-import threading
 import time
+
+
+def test_trigger(var):
+    time.sleep(int(var))
+
 
 # Будильник
 # Формат строки (год месяц день час минута секунда)
-#Config_time='2020 3 22 15 20 0'
-def alarm_clock(Config_time):
-    Config_list=Config_time.split()
-    dt = datetime.datetime(int(Config_list[0]), int(Config_list[1]), int(Config_list[2]), int(Config_list[3]), int(Config_list[4]),
-                           int(Config_list[5]))
+# Config_time='2020#3#22#15#20#0'
+def alarm_clock(config_time):
+    config_list = config_time.split('#')
+    dt = datetime.datetime(int(config_list[0]), int(config_list[1]), int(config_list[2]), int(config_list[3]),
+                           int(config_list[4]),
+                           int(config_list[5]))
     diff = (dt - datetime.datetime.now()).total_seconds()
     try:
         time.sleep(diff)
-        print('сообщение в телегу текст')
     except:
         print('Нельзя поставить будильник в прошлое')
     return
@@ -24,11 +26,10 @@ def alarm_clock(Config_time):
 
 # проверка почты на новое письмо gmail
 # Нужно включить https://myaccount.google.com/lesssecureapps и https://mail.google.com/mail/u/2/#settings/fwdandpop
-# Формат строки (логин пароль )
-#check_mail_config='login@gmail.com Password123'
-
+# Формат строки (логин#пароль)
+# check_mail_config='login@gmail.com Password123'
 def check_email(check_mail_config):
-    mail_config_list=check_mail_config.split()
+    mail_config_list = check_mail_config.split('#')
     mail = imaplib.IMAP4_SSL('imap.gmail.com', 993)
     mail.login(mail_config_list[0], mail_config_list[1])
     mail.list()
@@ -47,15 +48,6 @@ def check_email(check_mail_config):
             email_message_From = email_message['From']
             email_message_From = email_message_From[email_message_From.index('<'):email_message_From.index('>')]
             email_message_From = email_message_From[1:]
-            print('Отправить сообщение в телегу о том, что занят')
-            print('Отправить "от кого" ', email_message_From)
-            count_Email_Start = count_Email_Current
+            return
+            # count_Email_Start = count_Email_Current
         time.sleep(15)  # частота проверки нового письма
-
-def test_trigger(var):
-    time.sleep(int(var))
-
-
-def test_action(var):
-    print("Я пишу", var)
-

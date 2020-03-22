@@ -13,7 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    tg_username = db.Column(db.String(80), unique=True)
+    tg_id = db.Column(db.String(80), unique=True)
 
     def __init__(self, username, password, tg_username=None):
         self.username = username
@@ -28,6 +28,9 @@ class User(db.Model):
 
     def get_id(self):
         return self.id
+    
+    def get_tg_id(self):
+        return self.tg_id
 
 
 class Trigger(db.Model):

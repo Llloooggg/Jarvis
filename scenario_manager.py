@@ -1,5 +1,6 @@
 from threading import Thread
 import triggers
+import actions
 import db_routing
 
 
@@ -15,7 +16,7 @@ class Executor(Thread):
     def execute(self):
         trigger = getattr(triggers, self.trigger_def)
         trigger(self.trigger_args)
-        action = getattr(triggers, self.action_def)
+        action = getattr(actions, self.action_def)
         action(self.action_args)
 
     def run(self):

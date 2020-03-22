@@ -7,3 +7,5 @@ def db_fill():
     add_trigger('Проверить почту', 'check_email')
 
     add_action('Тест', 'test_action')
+    add_action('Отправить письмо', 'send_mail')
+    add_action('Отправить сообщение в ТГ', 'send_message_tg')
