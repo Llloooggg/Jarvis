@@ -5,8 +5,9 @@ import db_routing
 
 
 class Executor(Thread):
-    def __init__(self, scenario):
+    def __init__(self, scenario, tg_id):
         Thread.__init__(self)
+        self.tg_id = tg_id
         self.sceanrio_id = scenario.id
         self.trigger_def = db_routing.get_trigers(scenario.id).def_name
         self.trigger_args = scenario.trigger_args
@@ -15,9 +16,9 @@ class Executor(Thread):
 
     def execute(self):
         trigger = getattr(triggers, self.trigger_def)
-        trigger(self.trigger_args)
+        trigger(self.trigger_args, self.tg_id)
         action = getattr(actions, self.action_def)
-        action(self.action_args)
+        action(self.action_args, self.tg_id)
 
     def run(self):
         thread = Thread(target=self.execute)

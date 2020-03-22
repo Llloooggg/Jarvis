@@ -4,14 +4,14 @@ import imaplib
 import time
 
 
-def test_trigger(var):
+def test_trigger(var, tg_id):
     time.sleep(int(var))
 
 
 # Будильник
 # Формат строки (год месяц день час минута секунда)
 # Config_time='2020#3#22#15#20#0'
-def alarm_clock(config_time):
+def alarm_clock(config_time, tg_id):
     config_list = config_time.split('#')
     dt = datetime.datetime(int(config_list[0]), int(config_list[1]), int(config_list[2]), int(config_list[3]),
                            int(config_list[4]),
@@ -28,7 +28,7 @@ def alarm_clock(config_time):
 # Нужно включить https://myaccount.google.com/lesssecureapps и https://mail.google.com/mail/u/2/#settings/fwdandpop
 # Формат строки (логин#пароль)
 # check_mail_config='login@gmail.com Password123'
-def check_email(check_mail_config):
+def check_email(check_mail_config, tg_id):
     mail_config_list = check_mail_config.split('#')
     mail = imaplib.IMAP4_SSL('imap.gmail.com', 993)
     mail.login(mail_config_list[0], mail_config_list[1])

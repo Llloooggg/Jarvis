@@ -72,13 +72,13 @@ def workshop():
             new_scenario = db_routing.add_scenario(current_user.get_id(), newScenarioName, triggerID, triggerArgs,
                                                    actionID,
                                                    actionArgs)
-            activeScenario = Executor(new_scenario)
+            activeScenario = Executor(new_scenario, current_user.get_tg_id())
             activeScenario.start()
             return redirect(url_for('workshop'))
 
-        if 'TGUsername' in request.form:
-            new_tg_username = request.form['TGUsername']
-            db_routing.tg_username_update(current_user.get_id(), new_tg_username)
+        if 'TGID' in request.form:
+            new_tg_id = request.form['TGID']
+            db_routing.tg_id_update(current_user.get_id(), new_tg_id)
             return redirect(url_for('workshop'))
 
         if 'ScenarioID' in request.form:
@@ -91,16 +91,16 @@ def workshop():
     user_scripts_list = db_routing.get_user_scripts(current_user.get_id())
     User = db_routing.get_user(id=current_user.get_id())
     if User:
-        tg_username = User.tg_username
+        tg_id = User.tg_id
     else:
-        tg_username = None
+        tg_id = None
     return render_template('workshop.html', triggers_list=triggers_list, actions_list=actions_list,
-                           user_scripts_list=user_scripts_list, tg_username=tg_username)
+                           user_scripts_list=user_scripts_list, tg_id=tg_id)
 
 
-@app.errorhandler(Exception)
-def universal_error(error):
-    return render_template('error.html'), 404
+# @app.errorhandler(Exception)
+# def universal_error(error):
+#     return render_template('error.html'), 404
 
 
 def string_check(string):

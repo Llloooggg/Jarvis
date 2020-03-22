@@ -1,21 +1,23 @@
 import smtplib
-from email.mime.text import MIMEText
 from email.header import Header
-from flask_login import current_user
+from email.mime.text import MIMEText
+
 import telegram
 
 
-#Ответ на письмо
-#формат строки (логин#пароль#адресат#текст)
-#send_mail_config='login@gmail.com#Password123#myfriend@gmail.com#Текст сообщения'
+def test_action(var, tg_id):
+    print(var)
 
-def send_mail(send_mail_config):
 
-    send_mail_list=send_mail_config.split('#')
-    mail_sender = send_mail_list[0] #отправитель
-    mail_receiver = send_mail_list[2] #адресат
-    username = send_mail_list[0] #имя пользователя
-    password = send_mail_list[1] #пароль от почты
+# Ответ на письмо
+# формат строки (логин#пароль#адресат#текст)
+# send_mail_config='login@gmail.com#Password123#myfriend@gmail.com#Текст сообщения'
+def send_mail(send_mail_config, tg_id):
+    send_mail_list = send_mail_config.split('#')
+    mail_sender = send_mail_list[0]  # отправитель
+    mail_receiver = send_mail_list[2]  # адресат
+    username = send_mail_list[0]  # имя пользователя
+    password = send_mail_list[1]  # пароль от почты
     server = smtplib.SMTP('smtp.gmail.com:587')
 
     # Формируем тело письма
@@ -32,6 +34,5 @@ def send_mail(send_mail_config):
     server.quit()
 
 
-def send_message_tg(text, user_id=current_user.get_tg_id()):
-    telegram.send_message(user_id, text)
-
+def send_message_tg(text, tg_id):
+    telegram.send_message(tg_id, text)

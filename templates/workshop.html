@@ -46,7 +46,7 @@
         <section class="condition">
             <div class="form">
                 <div class="form__title">
-                    Создать новый
+                    Создать новый сценарий
                 </div>
                 <form action="/workshop" method="POST" name="NewSceanrio">
                     <div class="form_condition">
@@ -133,11 +133,11 @@
                 </div>
                 <form action="/workshop" method="POST" name="Telegram">
                     <label class="form__log">
-                        {% if tg_username %}
-                            <input class="form__input-text" name="TGUsername" placeholder=@{{ tg_username }}
+                        {% if tg_id %}
+                            <input class="form__input-text" name="TGID" placeholder=@{{ tg_id }}
                                    type="text">
                         {% else %}
-                            <input class="form__input-text" name="TGUsername" placeholder="@Логин" type="text">
+                            <input class="form__input-text" name="TGID" placeholder="@Логин" type="text">
                         {% endif %}
                     </label>
                     <div class="form__btns">
