@@ -129,5 +129,5 @@ def delete_scenario(scenario_id):
 
 def tg_id_update(current_user_id, new_tg_username):
     current_user = User.query.filter_by(id=current_user_id).first()
-    current_user.tg_username = new_tg_username
+    current_user.tg_id = new_tg_username
     db.session.commit()
