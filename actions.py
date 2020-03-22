@@ -26,7 +26,7 @@ def send_mail(send_mail_config, tg_id):
     msg = MIMEText(body, 'plain', 'utf-8')
     msg['Subject'] = Header(subject, 'utf-8')
 
-    # Отпавляем письмо
+    # Отправляем письмо
     server.starttls()
     server.ehlo()
     server.login(username, password)

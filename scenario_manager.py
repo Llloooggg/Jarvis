@@ -9,9 +9,9 @@ class Executor(Thread):
         Thread.__init__(self)
         self.tg_id = tg_id
         self.sceanrio_id = scenario.id
-        self.trigger_def = db_routing.get_trigers(scenario.id).def_name
+        self.trigger_def = db_routing.get_trigers(scenario.trigger_id).def_name
         self.trigger_args = scenario.trigger_args
-        self.action_def = db_routing.get_actions(scenario.id).def_name
+        self.action_def = db_routing.get_actions(scenario.action_id).def_name
         self.action_args = scenario.action_args
 
     def execute(self):
