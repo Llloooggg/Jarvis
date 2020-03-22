@@ -6,7 +6,9 @@ from flask import render_template, request, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 import db_routing
+from db_init import db_fill
 from db_routing import app, db
+from scenarioManger import Executor
 
 login_manager = LoginManager(app)
 
@@ -63,12 +65,14 @@ def workshop():
     if request.method == 'POST':
         if 'NewScenarioName' in request.form:
             newScenarioName = request.form['NewScenarioName']
-            triggerName = request.form['TriggerID']
+            triggerID = request.form['TriggerID']
             triggerArgs = request.form['TriggerArgs']
-            actionName = request.form['ActionID']
+            actionID = request.form['ActionID']
             actionArgs = request.form['ActionArgs']
-            db_routing.add_scenario(current_user.get_id(), newScenarioName, triggerName, triggerArgs, actionName,
-                                    actionArgs)
+            new_scenario = db_routing.add_scenario(current_user.get_id(), newScenarioName, triggerID, triggerArgs,
+                                                   actionID,
+                                                   actionArgs)
+            Executor(new_scenario)
             return redirect(url_for('workshop'))
 
         if 'TGUsername' in request.form:
@@ -131,4 +135,5 @@ def verify_password(username, password):
 if __name__ == '__main__':
     if not os.path.exists('./data.db'):
         db.create_all()
+        db_fill()
     app.run()

@@ -66,6 +66,20 @@ def add_user(user_name, passw_hash):
         return False
 
 
+def add_trigger(name, def_name):
+    new_trigger = Trigger(name=name, def_name=def_name)
+    db.session.add(new_trigger)
+    db.session.commit()
+    return new_trigger
+
+
+def add_action(name, def_name):
+    new_action = Action(name=name, def_name=def_name)
+    db.session.add(new_action)
+    db.session.commit()
+    return new_action
+
+
 def add_scenario(owner_id, scenario_name, trigger_id, trigger_args, action_id, action_args):
     new_scenario = Scenario(owner_id=owner_id, scenario_name=scenario_name, trigger_id=trigger_id,
                             trigger_args=trigger_args, action_id=action_id, action_args=action_args)
@@ -81,14 +95,22 @@ def get_user(id=None, username=None):
         return User.query.filter_by(username=username).first()
 
 
-def get_trigers():
-    triggers_list = Trigger.query.all()
-    return triggers_list
+def get_trigers(id=None):
+    if id is None:
+        triggers_list = Trigger.query.all()
+        return triggers_list
+    else:
+        trigger = Trigger.query.filter_by(id=id).first()
+        return trigger
 
 
-def get_actions():
-    actions_list = Action.query.all()
-    return actions_list
+def get_actions(id=None):
+    if id is None:
+        actions_list = Action.query.all()
+        return actions_list
+    else:
+        action = Action.query.filter_by(id=id).first()
+        return action
 
 
 def get_user_scripts(current_user_id):
