@@ -1,4 +1,7 @@
 var a = 0;
+//  orange = "#c77814";
+//  gray ="#b9b9b9";
+
 function activeClass() {
     if (a == 0) {
         document.getElementById('dropdown').style.display = "block";
@@ -9,6 +12,13 @@ function activeClass() {
         a = 0;
     }
 }
+
+document.addEventListener('click', function(e) {
+    if (e.target.className === 'contacts__schedule') {
+      e.target.style.color = e.target.style.color === 'gray' ? 'orange' : 'gray';
+    }
+  });
+
 
 
 
