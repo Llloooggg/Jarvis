@@ -8,7 +8,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 import db_routing
 from db_init import db_fill
 from db_routing import app, db
-from scenario_manger import Executor
+from scenario_manager import Executor
 
 login_manager = LoginManager(app)
 
