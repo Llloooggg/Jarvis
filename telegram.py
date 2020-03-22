@@ -4,8 +4,8 @@ botToken = '1003282848:AAHM72fKodCByupZihiOdtTF1996fDsYB8A'
 bot = telebot.TeleBot(botToken)
 
 
-telebot.apihelper.proxy = {'Socks5': '247398282:247398282@orbtl.s5.opennetwork.cc:999'}  #  -  прокси, если нужен в формате {'https':
-# 'login:password@address:port'}
+# telebot.apihelper.proxy = {'Socks5': '247398282:247398282@orbtl.s5.opennetwork.cc:999'}  #  -  прокси, если нужен в
+# формате {'https': 'login:password@address:port'}
 
 
 @bot.message_handler(commands=['start'])  # Реакция на команду start
