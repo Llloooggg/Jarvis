@@ -98,9 +98,9 @@ def workshop():
                            user_scripts_list=user_scripts_list, tg_id=tg_id)
 
 
-# @app.errorhandler(Exception)
-# def universal_error(error):
-#     return render_template('error.html'), 404
+@app.errorhandler(Exception)
+def universal_error(error):
+    return render_template('error.html'), 404
 
 
 def string_check(string):
