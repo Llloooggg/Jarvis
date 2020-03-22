@@ -28,7 +28,7 @@ class User(db.Model):
 
     def get_id(self):
         return self.id
-    
+
     def get_tg_id(self):
         return self.tg_id
 
