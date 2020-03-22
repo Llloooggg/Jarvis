@@ -119,7 +119,6 @@ def get_user_scripts(current_user_id):
 
 
 def delete_scenario(scenario_id):
-    print(scenario_id)
     scenario = Scenario.query.filter_by(id=scenario_id).first()
     db.session.delete(scenario)
     db.session.commit()

@@ -68,6 +68,15 @@ def check_email(gmail_user, gmail_pass):
 # Чтобы запустить будильник 1, Парсер 2
 Mode = 2
 
+
+def test_trigger(var):
+    time.sleep(int(var))
+
+
+def test_action(var):
+    print("Я пишу", var)
+
+
 # Для создания потока будильника передаются:
 # Id юзера который поставил будильник, и значения времени которые он поставил. Поток создаётся с именем(id) юзера
 if __name__ == '__main__':

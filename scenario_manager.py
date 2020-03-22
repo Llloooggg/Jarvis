@@ -1,11 +1,11 @@
 from threading import Thread
-from triggers import *
+import triggers
 import db_routing
 
 
 class Executor(Thread):
     def __init__(self, scenario):
-        threading.Thread.__init__(self)
+        Thread.__init__(self)
         self.sceanrio_id = scenario.id
         self.trigger_def = db_routing.get_trigers(scenario.id).def_name
         self.trigger_args = scenario.trigger_args
@@ -13,8 +13,10 @@ class Executor(Thread):
         self.action_args = scenario.action_args
 
     def execute(self):
-        self.trigger_def(self.trigger_args)
-        self.action_def.def_name(self.action_args)
+        trigger = getattr(triggers, self.trigger_def)
+        trigger(self.trigger_args)
+        action = getattr(triggers, self.action_def)
+        action(self.action_args)
 
     def run(self):
         thread = Thread(target=self.execute)

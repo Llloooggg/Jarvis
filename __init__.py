@@ -72,7 +72,8 @@ def workshop():
             new_scenario = db_routing.add_scenario(current_user.get_id(), newScenarioName, triggerID, triggerArgs,
                                                    actionID,
                                                    actionArgs)
-            Executor(new_scenario)
+            activeScenario = Executor(new_scenario)
+            activeScenario.start()
             return redirect(url_for('workshop'))
 
         if 'TGUsername' in request.form:
