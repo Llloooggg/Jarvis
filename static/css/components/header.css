@@ -102,7 +102,7 @@
     box-shadow: 0px 0px 10px 0px rgba(23, 59, 117, 0.55);  /* гардиент бордера */
     position: relative;
     padding: 18px 0;
-    background: #565454d6;
+    background: rgba(86, 84, 84, 0.84);
 }
 .drop-block_out {
     padding: 19px 25px;
