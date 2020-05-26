@@ -2,14 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
 
-app = Flask('Jarvis', static_folder='static', template_folder='templates')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-app.config['SECRET_KEY'] = 'Radius'
+app = Flask("Jarvis", static_folder="static", template_folder="templates")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
+app.config["SECRET_KEY"] = "Radius"
 db = SQLAlchemy(app)
 
 
 class User(db.Model):
-    __tablename__ = 'Users'
+    __tablename__ = "Users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
@@ -34,27 +34,27 @@ class User(db.Model):
 
 
 class Trigger(db.Model):
-    __tablename__ = 'Triggers'
+    __tablename__ = "Triggers"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     def_name = db.Column(db.String(200))
 
 
 class Action(db.Model):
-    __tablename__ = 'Actions'
+    __tablename__ = "Actions"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     def_name = db.Column(db.String(200))
 
 
 class Scenario(db.Model):
-    __tablename__ = 'Scenarios'
+    __tablename__ = "Scenarios"
     id = db.Column(db.Integer, primary_key=True)
-    owner_id = db.Column(db.Integer, ForeignKey('Users.id'))
+    owner_id = db.Column(db.Integer, ForeignKey("Users.id"))
     scenario_name = db.Column(db.String(80), nullable=False)
-    trigger_id = db.Column(db.Integer, ForeignKey('Triggers.id'))
+    trigger_id = db.Column(db.Integer, ForeignKey("Triggers.id"))
     trigger_args = db.Column(db.String(200))
-    action_id = db.Column(db.Integer, ForeignKey('Actions.id'))
+    action_id = db.Column(db.Integer, ForeignKey("Actions.id"))
     action_args = db.Column(db.String(200))
 
 
@@ -65,7 +65,7 @@ def add_user(user_name, passw_hash):
         db.session.commit()
         return new_user
     else:
-        print('Логин занят')
+        print("Логин занят")
         return False
 
 
@@ -83,9 +83,17 @@ def add_action(name, def_name):
     return new_action
 
 
-def add_scenario(owner_id, scenario_name, trigger_id, trigger_args, action_id, action_args):
-    new_scenario = Scenario(owner_id=owner_id, scenario_name=scenario_name, trigger_id=trigger_id,
-                            trigger_args=trigger_args, action_id=action_id, action_args=action_args)
+def add_scenario(
+    owner_id, scenario_name, trigger_id, trigger_args, action_id, action_args
+):
+    new_scenario = Scenario(
+        owner_id=owner_id,
+        scenario_name=scenario_name,
+        trigger_id=trigger_id,
+        trigger_args=trigger_args,
+        action_id=action_id,
+        action_args=action_args,
+    )
     db.session.add(new_scenario)
     db.session.commit()
     return new_scenario
@@ -117,7 +125,9 @@ def get_actions(id=None):
 
 
 def get_user_scripts(current_user_id):
-    user_scripts_list = Scenario.query.filter_by(owner_id=current_user_id).all()
+    user_scripts_list = Scenario.query.filter_by(
+        owner_id=current_user_id
+    ).all()
     return user_scripts_list
 
 
